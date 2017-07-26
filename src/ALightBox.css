@@ -25,7 +25,7 @@
 	position: absolute;
 }
 
-#alb_content img {
+#alb_content img, #alb_content iframe {
 	max-height: 100%;
 	max-width: calc(100% - 4rem);
 }
