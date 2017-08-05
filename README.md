@@ -40,6 +40,9 @@ I am using [Semantic Versioning 2.0.0](http://semver.org/) for versioning. For t
 This project is licensed under the MIT License. See the [LICENSE.md](LICENSE.md) file for more details.
 
 ## Changelog
+### Version 0.1.1: (6nd August, 2017)
+- [Fix] Problem [#1](/issues/1)
+
 ### Version 0.1.0: (2nd July, 2017)
 - First introduction
 
