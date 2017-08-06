@@ -83,13 +83,13 @@
       if (tag == 'a' && settings.showYoutubeThumbnails) {
         var videoID = $(items[i]).attr('href').match(/^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/)[2];
 
-        $(items[i]).html(`<img src="https://i.ytimg.com/vi/${videoID}/maxresdefault.jpg"/>`);
-        $('#alb_content').html(`<iframe src="https://www.youtube.com/embed/${videoID}?badge=0&html5=1" width="1280" height="720" frameborder="0" allowfullscreen></iframe>`);
+        $(items[i]).html('<img src="https://i.ytimg.com/vi/' + videoID + '/maxresdefault.jpg"/>');
+        $('#alb_content').html('<iframe src="https://www.youtube.com/embed/' + videoID + '?badge=0&html5=1" width="1280" height="720" frameborder="0" allowfullscreen></iframe>');
       }
     }
 
     /*-- Append the actual lightbox to the HTML-body --*/
-    $('body').append(`<div id="alb_overlay"><nav><span id="alb_icon_prev" title="${language[settings.language]["prev"]}"></span><span id="alb_icon_close" title="${language[settings.language]["close"]}"></span><span id="alb_icon_next" title="${language[settings.language]["next"]}"></span></nav><div id="alb_content"></div><div id="alb_footer"></div></div>`);
+    $('body').append('<div id="alb_overlay"><nav><span id="alb_icon_prev" title="' + language[settings.language]["prev"] + '"></span><span id="alb_icon_close" title="' + language[settings.language]["close"] + '"></span><span id="alb_icon_next" title="' + language[settings.language]["next"] + '"></span></nav><div id="alb_content"></div><div id="alb_footer"></div></div>');
 
     function open(obj) {
       galleryTitle = obj.parent().data('title');
@@ -113,6 +113,7 @@
 
     function close() {
       $('#alb_overlay').fadeOut(settings.effectTime);
+			$('#alb_content').html('');
 
       if (document.title != docTitle)
         document.title = docTitle;
@@ -143,24 +144,24 @@
 
       if (tag == 'a') {
         var videoID = $(item).attr('href').match(/^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/)[2];
-        $('#alb_content').html(`<iframe src="https://www.youtube.com/embed/${videoID}?badge=0&html5=1" width="1280" height="720" frameborder="0" allowfullscreen></iframe>`);
+        $('#alb_content').html('<iframe src="https://www.youtube.com/embed/' + videoID + '?badge=0&html5=1" width="1280" height="720" frameborder="0" allowfullscreen></iframe>');
       } else if (tag == 'img') {
-        $('#alb_content').html(`<img src="${$(item).attr('src')}"/>`);
+        $('#alb_content').html('<img src="' + $(item).attr('src') + '"/>');
       }
     }
 
-    $(this).find(itemSelector).stop().click(function(e) {
+    $(this).find(itemSelector).click(function(e) {
       e.preventDefault();
       open($(this));
     });
 
-    $('#alb_icon_close').stop().click(function() {
+    $('#alb_icon_close').click(function() {
       close();
     });
-    $('#alb_icon_next').stop().click(function() {
+    $('#alb_icon_next').click(function() {
       next();
     });
-    $('#alb_icon_prev').stop().click(function() {
+    $('#alb_icon_prev').click(function() {
       previous();
     });
 
