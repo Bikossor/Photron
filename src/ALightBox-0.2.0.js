@@ -15,7 +15,7 @@
     var settings = $.extend({}, defaults, options);
     var docTitle = document.title;
     var galleryTitle = '';
-    var itemSelector = '.alb_item';
+    var itemSelector = '.alb-item';
     var index = 0;
     var items = $(this).find(itemSelector);
     var totalItems = items.length;
@@ -84,19 +84,21 @@
         var videoID = $(items[i]).attr('href').match(/^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/)[2];
 
         $(items[i]).html('<img src="https://i.ytimg.com/vi/' + videoID + '/maxresdefault.jpg"/>');
-        $('#alb_content').html('<iframe src="https://www.youtube.com/embed/' + videoID + '?badge=0&html5=1" width="1280" height="720" frameborder="0" allowfullscreen></iframe>');
+        $('#alb-content').html('<iframe src="https://www.youtube.com/embed/' + videoID + '?badge=0&html5=1" width="1280" height="720" frameborder="0" allowfullscreen></iframe>');
       }
     }
 
     /*-- Append the actual lightbox to the HTML-body --*/
-    $('body').append('<div id="alb_overlay"><nav><span id="alb_icon_prev" title="' + language[settings.language]["prev"] + '"></span><span id="alb_icon_close" title="' + language[settings.language]["close"] + '"></span><span id="alb_icon_next" title="' + language[settings.language]["next"] + '"></span></nav><div id="alb_content"></div><div id="alb_footer"></div></div>');
+    $('body').append('<div id="alb-overlay"><nav><span id="alb-i-prev" title="' + language[settings.language]["prev"] + '"></span><span id="alb-i-close" title="' + language[settings.language]["close"] + '"></span><span id="alb-i-next" title="' + language[settings.language]["next"] + '"></span></nav><div id="alb-content"></div><div id="alb-footer"></div></div>');
 
     function open(obj) {
       galleryTitle = obj.parent().data('title');
       index = $(obj).parent().children(itemSelector).index(obj);
 
       update();
-      $('#alb_overlay').fadeIn(settings.effectTime);
+      $('#alb-overlay').fadeIn(settings.effectTime);
+
+			return false;
     }
 
     function update() {
@@ -106,17 +108,21 @@
         document.title = docTitle + ' - ' + $(items[index]).data('title');
 
       if ($(items[index]).parent().data('title') && settings.showGalleryTitle)
-        $('#alb_footer').html(galleryTitle + ': ' + (index + 1) + ' / ' + totalItems);
+        $('#alb-footer').html(galleryTitle + ': ' + (index + 1) + ' / ' + totalItems);
       else
-        $('#alb_footer').html(index + ' / ' + totalItems);
+        $('#alb-footer').html(index + ' / ' + totalItems);
+
+			return false;
     }
 
     function close() {
-      $('#alb_overlay').fadeOut(settings.effectTime);
-			$('#alb_content').html('');
+      $('#alb-overlay').fadeOut(settings.effectTime);
+			$('#alb-content').html('');
 
       if (document.title != docTitle)
         document.title = docTitle;
+
+			return false;
     }
 
     function next() {
@@ -127,6 +133,7 @@
         index = 0;
         update();
       }
+			return false;
     }
 
     function previous() {
@@ -137,6 +144,7 @@
         index = totalItems - 1;
         update();
       }
+			return false;
     }
 
     function loadContent(item) {
@@ -144,10 +152,11 @@
 
       if (tag == 'a') {
         var videoID = $(item).attr('href').match(/^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/)[2];
-        $('#alb_content').html('<iframe src="https://www.youtube.com/embed/' + videoID + '?badge=0&html5=1" width="1280" height="720" frameborder="0" allowfullscreen></iframe>');
+        $('#alb-content').html('<iframe src="https://www.youtube.com/embed/' + videoID + '?badge=0&html5=1" width="1280" height="720" frameborder="0" allowfullscreen></iframe>');
       } else if (tag == 'img') {
-        $('#alb_content').html('<img src="' + $(item).attr('src') + '"/>');
+        $('#alb-content').html('<img src="' + $(item).attr('src') + '"/>');
       }
+			return false;
     }
 
     $(this).find(itemSelector).click(function(e) {
@@ -155,17 +164,51 @@
       open($(this));
     });
 
-    $('#alb_icon_close').click(function() {
+		var touchX = null;
+		var touchY = null;
+
+		document.addEventListener('touchstart', function(e) {
+			touchX = e.touches[0].clientX;
+			touchY = e.touches[0].clientY;
+		});
+
+		document.addEventListener('touchmove', function(e) {
+			if (!touchX || !touchY)
+				return;
+
+			var diffX = touchX - e.touches[0].clientX;;
+			var diffY = touchY - e.touches[0].clientY;
+
+			if (Math.abs(diffX) > Math.abs(diffY)) {
+					if (diffX > 0) {
+						next();
+					}
+					else {
+						previous();
+					}
+			}
+			else {
+				if (diffY > 0) {
+					close();
+				}
+				else { }
+			}
+
+			touchX = null;
+			touchY = null;
+		});
+
+    $('#alb-i-close').click(function() {
       close();
     });
-    $('#alb_icon_next').click(function() {
+    $('#alb-i-next').click(function() {
       next();
     });
-    $('#alb_icon_prev').click(function() {
+    $('#alb-i-prev').click(function() {
       previous();
     });
 
-    $(document).keydown(function(e) {
+    $(document).keypress(function(e) {
       if (e.keyCode == 39) next();
       if (e.keyCode == 37) previous();
       if (e.keyCode == 27) close();
