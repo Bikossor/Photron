@@ -1,1 +1,11 @@
-theme: jekyll-theme-cayman
+title: ALightBox
+email: contact@bikossor.de
+description: An easy-to-use lightbox in form of a jQuery Plugin
+keywords: jquery, plugin, lightbox, bikossor, javascript, software, website
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "" # the base hostname & protocol for your site, e.g. http://example.com
+username: Bikossor
+markdown: kramdown
+sass:
+  sass_dir: css
+  style: compressed

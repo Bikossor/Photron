@@ -1,0 +1,107 @@
+---
+---
+
+a
+  text-decoration: none
+
+h1
+  font-family: 'Ubuntu' !important
+
+
+#Home
+  background: url('/assets/img/aperture-vintage-313010.jpg') bottom center fixed
+  background-size: cover
+
+  h1, p
+    color: #fff
+    text-shadow: 2px 2px #000
+
+.a-cta
+  color: #fff
+  background: #689938
+  border: 2px solid #689938
+  border-radius: 5px
+  padding: 1rem 1.6rem 1rem 1.6rem
+  text-decoration: none
+  text-transform: uppercase
+  transition: background 200ms, border 200ms
+  font-weight: bold
+  box-shadow: 2px 2px #000
+  margin: 1rem
+
+  i, span
+    vertical-align: middle
+
+  i
+    margin-right: 1rem
+
+.a-cta:hover
+  background: transparent
+  border: 2px solid #fff
+  text-shadow: none !important
+  transition: background 200ms, border 200ms
+
+.credit-badge
+  background-color: black
+  color: white
+  text-decoration: none
+  padding: 4px 6px
+  font-family: -apple-system, BlinkMacSystemFont, San Francisco, Helvetica Neue, Helvetica, Ubuntu, Roboto, Noto, Segoe UI, Arial, sans-serif
+  font-size: 12px
+  font-weight: bold
+  line-height: 1.2
+  display: inline-block
+  border-radius: 3px
+  position: absolute
+  left: 1rem
+  bottom: 1rem
+
+footer
+  color: #fff
+  background: #111
+
+  a
+    color: #689938
+    text-decoration: none
+
+.feature-item
+  display: flex
+  flex-direction: column
+  align-items: center
+  min-width: 300px
+
+  .icon
+    display: flex
+    justify-content: center
+    align-items: center
+    width: 128px
+    height: 128px
+    border-radius: 50%
+    border: 5px solid #689938
+    color: #689938
+    transition: color 200ms, background 200ms
+
+  .title
+    font-family: 'Ubuntu' !important
+
+  &:hover
+    .icon
+      color: #fff
+      background: #689938
+
+    .title
+      text-decoration: underline
+
+
+@media screen and (max-width: 1279px)
+  .feature-list
+    -moz-flex-direction: column
+    -ms-flex-direction: column
+    -webkit-box-orient: vertical
+    -webkit-box-direction: normal
+    flex-direction: column
+
+#Demo_Container
+  img
+    height: 240px
+    width: auto
