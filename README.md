@@ -30,6 +30,7 @@ in your ``head`` element.
 ``<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>`` *(I recommend to download this file to your server)*
 - After that you'll also need to reference the javascript file in your HTML file by using:<br>
 **Example:** ``<script src="./[PATH]/[TO]/ALightBox-0.1.1.js"></script>`` *(Make sure the jQuery library is chronologically before this script)*
+- Last you add the ```.alb-item```-class to every item inside the gallery
 
 ### Usage
 ```html
