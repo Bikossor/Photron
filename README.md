@@ -1,5 +1,5 @@
 # ALightBox
-ALightBox is an easy-to-use jQuery-Plugin which provides a lightbox for your website.
+An easy-to-use lightbox in form of a jQuery Plugin.
 
 ## Features
 - Supports 9 different languages
@@ -35,7 +35,7 @@ in your ``head`` element.
 ### Usage
 ```html
 <script type="text/javascript">
-	$('.YourSelector').ALightBox({
+	$('#YourSelector').ALightBox({
 		//-- Custom settings
 	});
 </script>
@@ -60,12 +60,16 @@ showYoutubeThumbnails | boolean | false | Whether the thumbnails of embedded You
 I am using [Semantic Versioning 2.0.0](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/Bikossor/ALightBox/tags).
 
 ## Authors
-- **André Lichtenthäler ([Bikossor](https://github.com/Bikossor))** - *Initial work*
+- **André Lichtenthäler ([Bikossor](https://bikossor.de))** - *Initial work*
 
 ## License
 This project is licensed under the MIT License. See the [LICENSE.md](LICENSE.md) file for more details.
 
 ## Changelog
+### Version 0.2.1: (4th September, 2017)
+- [Fixed] Issue [#2](/issues/2)
+- [Added] A custom [GitHub Page](https://bikossor.github.io/ALightBox)
+
 ### Version 0.2.0: (20th August, 2017)
 - Renamed the CSS-IDs
 - Improved CSS compatibility
