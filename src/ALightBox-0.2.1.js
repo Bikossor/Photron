@@ -110,7 +110,7 @@
       if ($(items[index]).parent().data('title') && settings.showGalleryTitle)
         $('#alb-footer').html(galleryTitle + ': ' + (index + 1) + ' / ' + totalItems);
       else
-        $('#alb-footer').html(index + ' / ' + totalItems);
+        $('#alb-footer').html((index + 1) + ' / ' + totalItems);
 
 			return false;
     }
