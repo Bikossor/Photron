@@ -3,18 +3,17 @@ An easy-to-use lightbox in form of a jQuery Plugin.
 
 ## Features
 - Supports 9 different languages
-	- German *(de)*
-	- English *(en)*
-	- French *(fr)*
-	- Spanish *(es)*
-	- Italian *(it)*
-	- Chinese *(zh)*
-	- Russian *(ru)*
-	- Danish *(da)*
-	- Dutch *(nl)*
-- Supports images
+	- German,
+	- English,
+	- French,
+	- Spanish,
+	- Italian,
+	- Chinese,
+	- Russian,
+	- Danish,
+	- Dutch
 - Supports videos from YouTube
-- Supports touch
+- Supports touch gestures for navigation
 
 ## Getting started
 - *Coming soon...*
@@ -60,14 +59,14 @@ showYoutubeThumbnails | boolean | false | Whether the thumbnails of embedded You
 I am using [Semantic Versioning 2.0.0](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/Bikossor/ALightBox/tags).
 
 ## Authors
-- **André Lichtenthäler ([Bikossor](https://bikossor.de))** - *Initial work*
+- André Lichtenthäler ([Bikossor](https://bikossor.de)) - *Initial work*
 
 ## License
 This project is licensed under the MIT License. See the [LICENSE.md](LICENSE.md) file for more details.
 
 ## Changelog
 ### Version 0.2.1: (4th September, 2017)
-- [Fixed] Issue [#2](/issues/2)
+- [Fixed] Issue [#2](https://github.com/Bikossor/ALightBox/issues/2)
 - [Added] A custom [GitHub Page](https://bikossor.github.io/ALightBox)
 
 ### Version 0.2.0: (20th August, 2017)
@@ -77,7 +76,7 @@ This project is licensed under the MIT License. See the [LICENSE.md](LICENSE.md)
 - Added support for navigation via touch
 
 ### Version 0.1.1: (6th August, 2017)
-- Fixed issue [#1](/issues/1) *(This time for real...)*
+- Fixed issue [#1](https://github.com/Bikossor/ALightBox/issues/1) *(This time for real...)*
 - Changed some lines from ES6 to ES5 *(For compatibility reasons)*
 - The ``close``-Function now resets the ALightBox content explicitly
 - Added a minified version of the stylesheet
