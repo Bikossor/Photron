@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/Bikossor/ALightBox.svg?branch=master)](https://travis-ci.org/Bikossor/ALightBox)
 # ALightBox
 An easy-to-use lightbox.
 
