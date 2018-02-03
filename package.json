@@ -1,0 +1,24 @@
+{
+  "name": "alightbox",
+  "version": "1.0.0",
+  "description": "An easy-to-use lightbox",
+  "scripts": {
+    "test": "mocha",
+    "build": "babel src -d dist --eval --presets=minify"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bikossor/ALightBox.git"
+  },
+  "author": "André Lichtenthäler",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Bikossor/ALightBox/issues"
+  },
+  "homepage": "https://github.com/Bikossor/ALightBox#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-minify": "^0.2.0",
+    "mocha": "^5.0.0"
+  }
+}
