@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>ALightBox</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1"/>
+		<style>
+			.opening {
+				animation-name: "open-animation";
+				animation-duration: 1s;
+				animation-fill-mode: forwards;
+			}
+			@keyframes open-animation {
+				from {  transform: translateY(-100%); }
+				to   {  transform: translateY(0); }
+			}
+			.closing {
+				animation-name: "close-animation";
+				animation-duration: 1s;
+				animation-fill-mode: forwards;
+			}
+			@keyframes close-animation {
+				from {  transform: translateY(0); }
+				to   {  transform: translateY(-100%); }
+			}
+			#Container img {
+				height: 200px;
+				width: auto;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Landscape</h1>
+		<div id="Container" data-title="Landscape">
+			<img class="alb-item" src="./images/1.jpg" data-title="Miau"/>
+			<img class="alb-item" src="./images/2.jpg"/>
+			<img class="alb-item" src="./images/3.jpg"/>
+			<img class="alb-item" src="./images/4.jpg"/>
+			<img class="alb-item" src="./images/5.jpg"/>
+			<!--<a class="alb-item" href="https://www.youtube.com/watch?v=wl7eBp7fQeM">Test</a>-->
+		</div>
+		<script src="../dist/ALightBox-1.0.0.js"></script>
+		<script type="text/javascript">
+			new ALightBox({
+				showYoutubeThumbnails: true
+			});
+		</script>
+	</body>
+</html>
