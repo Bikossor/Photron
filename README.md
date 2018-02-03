@@ -1,5 +1,5 @@
 # ALightBox
-An easy-to-use lightbox in form of a jQuery Plugin.
+An easy-to-use lightbox.
 
 ## Features
 - Supports 9 different languages
@@ -12,30 +12,26 @@ An easy-to-use lightbox in form of a jQuery Plugin.
 	- Russian,
 	- Danish,
 	- Dutch
-- Supports videos from YouTube
+- ~~Supports videos from YouTube~~ **(Currently WIP)**
 - Supports touch gestures for navigation
+- Completly vanilla and standalone
+
 
 ## Getting started
 - *Coming soon...*
 
-### Requirements
-- [jQuery](https://jquery.com/)
-
 ### Installing
-- Just download the compressed *(recommended)* or uncompressed javascript file **and** the compressed *(also recommended)* stylesheet from the ``src/`` folder
-- Next up reference the stylesheet in your HTML file by using:<br>
-**Example:** ``<link rel="stylesheet" href="./[PATH]/[TO]/ALightBox-0.1.1.css">`` *(Make sure your path is correct!)*
-in your ``head`` element.
-- Now we have to include the jQuery library in the ``head`` element with the following code:<br>
-``<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>`` *(I recommend to download this file to your server)*
-- After that you'll also need to reference the javascript file in your HTML file by using:<br>
-**Example:** ``<script src="./[PATH]/[TO]/ALightBox-0.1.1.js"></script>`` *(Make sure the jQuery library is chronologically before this script)*
-- Last you add the ```.alb-item```-class to every item inside the gallery
+- Just download the compressed javascript file from the ``dist/`` folder
+- After that you'll also to reference the javascript file in your HTML file by using:<br>
+```html
+<script src="./[PATH]/[TO]/ALightBox-1.0.0.js"></script>
+```
+- Last you add the ``.alb-item`` class to every item inside the gallery
 
 ### Usage
 ```html
 <script type="text/javascript">
-	$('#YourSelector').ALightBox({
+	new ALightBox({
 		//-- Custom settings
 	});
 </script>
@@ -66,6 +62,10 @@ I am using [Semantic Versioning 2.0.0](http://semver.org/) for versioning. For t
 This project is licensed under the MIT License. See the [LICENSE.md](LICENSE.md) file for more details.
 
 ## Changelog
+### Version 1.0.0: (3rd February, 2018)
+- [Change] ``ALightBox`` is now completly vanilla and standalone
+- [Added] Opening and closing animations of the overlay
+
 ### Version 0.2.1: (4th September, 2017)
 - [Fixed] Issue [#2](https://github.com/Bikossor/ALightBox/issues/2)
 - [Added] A custom [GitHub Page](https://bikossor.github.io/ALightBox)
