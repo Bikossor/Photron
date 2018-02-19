@@ -1,4 +1,8 @@
 [![Build Status](https://travis-ci.org/Bikossor/ALightBox.svg?branch=master)](https://travis-ci.org/Bikossor/ALightBox)
+[![GitHub release](https://img.shields.io/github/release/bikossor/alightbox.svg)]()
+[![Size](http://img.badgesize.io/https://raw.githubusercontent.com/Bikossor/alightbox/master/dist/ALightBox-1.0.0.js.svg)]()
+[![Gzip size](http://img.badgesize.io/https://raw.githubusercontent.com/Bikossor/alightbox/master/dist/ALightBox-1.0.0.js?compression=gzip)]()
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/92dc4d00fa224240826dae2a48ed5cfd)](https://www.codacy.com/app/Bikossor/ALightBox?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Bikossor/ALightBox&amp;utm_campaign=Badge_Grade)
 # ALightBox
 An easy-to-use lightbox.
 
@@ -16,7 +20,6 @@ An easy-to-use lightbox.
 - ~~Supports videos from YouTube~~ **(Currently WIP)**
 - Supports touch gestures for navigation
 - Completly vanilla and standalone
-
 
 ## Getting started
 - *Coming soon...*
@@ -46,12 +49,6 @@ showGalleryTitle | boolean | true | Whether the ``data-title`` attribute of the 
 language | string | Default language of the webbrowser | In which language the text should be translated. Possible languanges: **de** (German), **en** (English), **fr** (French), **es** (Spanish), **it** (Italian), **zh** (Chinese), **ru** (Russian), **da** (Danish) and **nl** (Dutch)
 roundRobin | boolean | true | Whether the items in an ALightBox should begin at the start if the end was reached and vice versa.
 showYoutubeThumbnails | boolean | false | Whether the thumbnails of embedded YouTube videos should be shown or not.
-
-## Deployment
-- *Coming soon...*
-
-## Built with
-- **Nothing else**
 
 ## Versioning
 I am using [Semantic Versioning 2.0.0](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/Bikossor/ALightBox/tags).
@@ -85,6 +82,3 @@ This project is licensed under the MIT License. See the [LICENSE.md](LICENSE.md)
 
 ### Version 0.1.0: (2nd July, 2017)
 - First introduction
-
-## Acknowledgments
-- *Coming soon...*
