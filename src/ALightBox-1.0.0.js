@@ -22,7 +22,7 @@ function ALightBox(options) {
     totalItemsCount = 0,
     lightboxOpen = false;
   
-  var JOSH=function(){"use strict";var a,b,c=document,d=c.createElement("style"),e=function(e){if("head"===a)b=c.head;else if("body"===a)b=c.body;else throw new Error;d.textContent=e,b.appendChild(d)};return{parse(b,c="head"){if(a=c.toLowerCase(),!b)throw new Error;var d="";if("object"==typeof b&&1<=b.length){for(var f in b){for(var g in d+=f+"{",b[f])d+=g+":"+b[f][g]+";";d+="}"}e(d)}else if("string"==typeof b)e(b);else throw new Error;return!0}}}();
+  var JOSH=function(){"use strict";return{parse:function(r){if("object"==typeof r){var n="";for(var t in r){n+=t+"{";for(var e in r[t])n+=e+":"+r[t][e]+";";n+="}"}return n}}}}();
   var head = document.getElementsByTagName("head")[0];
   var style = document.createElement("style");
   style.innerHTML = JOSH.parse({
