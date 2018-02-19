@@ -43,7 +43,7 @@ An easy-to-use lightbox.
 
 Setting | Datatype | Default | Description
 ------- | -------- | ------- | -----------
-effectTime | int | 200 | How much milliseconds any animation of the ALightBox takes.
+effectTime | int | 200 | How many milliseconds the animations takes.
 showImageTitle | boolean | true | Whether the ``data-title`` attribute of the ``img`` should be shown or not.
 showGalleryTitle | boolean | true | Whether the ``data-title`` attribute of the ALightBox container *(e.g. ``.lightBox``)* should be shown or not.
 language | string | Default language of the webbrowser | In which language the text should be translated. Possible languanges: **de** (German), **en** (English), **fr** (French), **es** (Spanish), **it** (Italian), **zh** (Chinese), **ru** (Russian), **da** (Danish) and **nl** (Dutch)
