@@ -3,7 +3,6 @@ function ALightBox(options) {
 
   /*-- Plugin defaults --*/
   var defaults = {
-    effectTime: 200,
     showImageTitle: true,
     showGalleryTitle: true,
     language: navigator.language.substr(0, 2),
@@ -45,7 +44,8 @@ function ALightBox(options) {
       "display": "flex",
       "justify-content": "space-between",
       "width": "100%",
-      "height": "48px"
+      "height": "48px",
+      "background": "rgba(0, 0, 0, 0.5)"
     },
     "#alb-content": {
       "-webkit-box-align": "center",
@@ -83,24 +83,13 @@ function ALightBox(options) {
       "display": "inline-block",
       "opacity": "0.6",
       "cursor": "pointer",
-      "margin": "8px",
+      "padding": "8px",
       "width": "32px",
-      "height": "32px"
+      "height": "32px",
+      "fill": "#fff"
     },
     "#alb-i-prev:hover, #alb-i-close:hover, #alb-i-next:hover": {
       "opacity": "1"
-    },
-    "#alb-i-prev": {
-      "background": "url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABmJLR0QAAAAAAAD5Q7t/AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3wwTFTEn0VrCaAAAAAxpVFh0Q29tbWVudAAAAAAAvK6ymQAAAahJREFUeNrtm71Ow0AQhGcNQkhBUEVUQAk9z88bQA8FRVIhqiBFAoRgaFxEweCfnH17O2xp2Zbm2/Hd7Z4PEA2SjySpKHzFjTAh4WsAs+3rpio8PACSrwAO2+4ztYxvRxVI+HM9qs/6PGcRhAOYD32+Klj4ss74fJf3mFrGi3VAqowX5wCSSwBnY73fVIW7BTCVcHcAphbuBkAu4dkB5BaeDUDqebwYAN6ETwbAq/DRAXgXPhqAvvV47qhSZnxIPV68A0rLeDIAJFcATlB4mFrGBwMg+YWATVRTFd4KILrwXwGoCP8BgOQnAu0TdAZA8gPAPkSjUrJ72yfwDuBAFoDqWPDXNCgBostCKDSIPkvhkCA6CzKzPTMzAG+SDohaFaZoiLwAOJYFULoj/puiyYmaHdWD5YOkAxocsQBwLuOABkdceHZEjs1RV46YfGXnzREefpC4B3ApCyA3CDfFjZld1Z/GnaQDcjnCbXm74YgbSQc0OOIWwLUsgLFAFNsSTzVGRDgwsROI4nt8u06fEQ9NPQE4lQXQF4TCwclejogMYsGGkAch74hvE9kpVdZ2MIQAAAAASUVORK5CYII=') center center no-repeat",
-      "background-size": "32px 32px"
-    },
-    "#alb-i-close": {
-      "background": "url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABmJLR0QAAAAAAAD5Q7t/AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3wwTFTU234YnngAAAAxpVFh0Q29tbWVudAAAAAAAvK6ymQAAAqhJREFUeNrtm81twkAQRr8hoQskcuUSNxClB0Qb6SGiHA6BCpJDyDkSPaQLhCYXGzmwtvdvZuzglXwLaN8jnt3ZmSVmRsogIgx5THDjYxSQ8NkZgLk1ADNT6hfEPAtm3jDzlpkLQ/iinMOGmRdaAir4aphIqMFXI05CIryJBAd8vIQM8KoSWuDjJGSCV5HgAR8uISO8qIQA+DAJmeFFJETA+0sQgK9LIEN4PwlC8NXYlwBW8N0SBOH/vA7V9xvAt0twCMgJ75TQJUIAvi5h1pYLEICpwAq2BPAKoLgU74Iv/3YpMI8pgLuu/wAp++fA6Io7wr9888rUEAQlJ7JvkKAP37EMUjlZKQmFObzHRoikJ2YK77kVlpbwbQYfkAxJSrCDD0yHi4FICMtDAg9ECsHAqA8feSTW19chLgONPBTtm4RtdNIVKaBPEq7yjCARCQL6EBid8EEiEgVYSuiE9xFBqcXRckhmcK7xBeAZQPDkL4u5uQRoSoiGd4nIWRw9AFgB+BCE3wF4SYWvv/q5q8OPwr/+g0SxIdejFQyDgl9XUMwVAwjAJ4AnpSC4A7AuX7ukIHg/QHjUAq23hKZWntQYUAB4U4ZvPGhtAm/tYxrwLtB0K1zccjLU14ORqHQ4dBWwCHjBqwMRea8Ok4EEvKDAKHEkNpTzQJFDUUn49/Lp7bG4Rp1Q8qA1qTAiXrFRKsNFlcY04dXKcL4CLOB7Ux6fa8Mrdoec405bNngCcBTaoKzqJzlNCQoRHZh5fZH15RpHImKLJiniATVJ5W6Tiz50YaM2uZyNksndomzUKDm2ynJas3T2q2Rs1Cwd0y4vdo+OjdrlfSXsJeEDJIhcmPC5MqN2g5KNrsyMl6b4H16bS60M0dXWUl/CHMCJiH4sBIyXp4c+bl7AL1DfX7VzuAoBAAAAAElFTkSuQmCC') center center no-repeat",
-      "background-size": "32px 32px"
-    },
-    "#alb-i-next": {
-      "background": "url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABmJLR0QAAAAAAAD5Q7t/AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3wwTFTE3zO3SDAAAAAxpVFh0Q29tbWVudAAAAAAAvK6ymQAAAaFJREFUeNrlmrFOwzAURd91LQEqEhOIia79AH6fT8gHZGCgTMCCEEgVAsxQB0HUqBFx7Pd8zxi1Se/xtWtZkbDjVlgJf3lmy48QQthz/Q3AKbMAGhGHBHRsAZzUKMCN/NxxXCNeWQV0LKOIR7YpMMQTgAumBvQ5j43YsDbAfCNc4vuZa0TqBvS5B3DFLEC9iFwC1IrILUCdiFIC1IgoLaC4CC0Ciu0jtAnILkKrgGwitAuYXYQVAR3JT6ic2CL5eYS1BiRvhBPbLKce51tvwORG1CagIwBwzAJGi6hdwEERLAIGRTjhAvFf45O1AX0+nHADTxr8HcCRiAibgC8Ai98XPGtwFgGDwWsXcDB4rfuALXYsxn6hlgb8+1zAuoAXAGdTbuDZRty6ANpD0TYubsnfWdTegA2A1ZwPcMpHfDX3gzzbiGttQLYR19aAFsC65A/wrMFLTYEmVn2tZOpla0CrKXTOBtxoG/FcDWgAXFvYYnrW4KkFtJprPqcAs8GnLoKN9sVtrgY8ALiUivCswccKqDb4D2E/d8ICbfCeAL7gkW/gmA5/nYsoNwAAAABJRU5ErkJggg==') center center no-repeat",
-      "background-size": "32px 32px"
     }
   });
 
@@ -167,14 +156,17 @@ function ALightBox(options) {
   var alb_i_prev = document.createElement("span");
   alb_i_prev.id = "alb-i-prev";
   alb_i_prev.title = language[settings.language]["prev"];
+  alb_i_prev.innerHTML = '<svg height="32" viewBox="0 0 512 512" width="32" xmlns="http://www.w3.org/2000/svg"><polygon points="352,128.4 319.7,96 160,256 160,256 160,256 319.7,416 352,383.6 224.7,256 "/></svg>';
 
   var alb_i_close = document.createElement("span");
   alb_i_close.id = "alb-i-close";
   alb_i_close.title = language[settings.language]["close"];
+  alb_i_close.innerHTML = '<svg height="32" viewBox="0 0 48 48" width="32" xmlns="http://www.w3.org/2000/svg"><path d="M38 12.83l-2.83-2.83-11.17 11.17-11.17-11.17-2.83 2.83 11.17 11.17-11.17 11.17 2.83 2.83 11.17-11.17 11.17 11.17 2.83-2.83-11.17-11.17z"/><path d="M0 0h48v48h-48z" fill-opacity="0"/></svg>';
 
   var alb_i_next = document.createElement("span");
   alb_i_next.id = "alb-i-next";
   alb_i_next.title = language[settings.language]["next"];
+  alb_i_next.innerHTML = '<svg height="32" viewBox="0 0 512 512" width="32" xmlns="http://www.w3.org/2000/svg"><polygon points="160,128.4 192.3,96 352,256 352,256 352,256 192.3,416 160,383.6 287.3,256 "/></svg>';
 
   nav.appendChild(alb_i_prev);
   nav.appendChild(alb_i_close);
@@ -195,7 +187,7 @@ function ALightBox(options) {
   var alb_content = document.getElementById("alb-content");
 
   for (var i = 0; i < totalItems; i++) {
-    if (items[i].localName == 'a' && settings.showYoutubeThumbnails) {
+    if (items[i].localName === 'a' && settings.showYoutubeThumbnails) {
       var videoID = items[i].href.match(/^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/)[2];
 
       items[i].innerHTML = '<img src="https://i.ytimg.com/vi/' + videoID + '/maxresdefault.jpg"/>';
@@ -298,10 +290,10 @@ function ALightBox(options) {
   function loadContent(item) {
     var tag = item.localName;
 
-    if (tag == 'a') {
+    if (tag === 'a') {
       var videoID = $(item).attr('href').match(/^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/)[2];
       alb_content.innerHTML = '<iframe src="https://www.youtube.com/embed/' + videoID + '?badge=0&html5=1" width="1280" height="720" frameborder="0" allowfullscreen></iframe>';
-    } else if (tag == 'img') {
+    } else if (tag === 'img') {
       alb_content.innerHTML = '<img src="' + item.src + '"/>';
     }
     return false;
@@ -353,8 +345,8 @@ function ALightBox(options) {
   };
 
   document.onkeypress = function(e) {
-    if (e.keyCode == 39) next();
-    if (e.keyCode == 37) previous();
-    if (e.keyCode == 27) close();
+    if (e.keyCode === 39) next();
+    if (e.keyCode === 37) previous();
+    if (e.keyCode === 27) close();
   };
 };
