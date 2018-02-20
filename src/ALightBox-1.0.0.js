@@ -6,6 +6,7 @@ function ALightBox(options) {
     effectTime: 200,
     showImageTitle: true,
     showGalleryTitle: true,
+    language: navigator.language.substr(0, 2),
     roundRobin: true,
     showYoutubeThumbnails: false
   }
@@ -105,6 +106,55 @@ function ALightBox(options) {
 
   head.appendChild(style);
 
+  /*-- Languages --*/
+  var language = {
+    de: {
+      prev: 'Vorheriges Bild',
+      next: 'Nächstes Bild',
+      close: 'Schließen'
+    },
+    en: {
+      prev: 'previous image',
+      next: 'next image',
+      close: 'close'
+    },
+    fr: {
+      prev: 'Image précédente',
+      next: 'Image suivante',
+      close: 'Fermer'
+    },
+    es: {
+      prev: 'Imagen anterior',
+      next: 'Siguiente imagen',
+      close: 'Cerca'
+    },
+    it: {
+      prev: 'Immagine precedente',
+      next: 'Immagine successiva',
+      close: 'Vicino'
+    },
+    zh: {
+      prev: '上一张图片',
+      next: '下一图片',
+      close: '关'
+    },
+    ru: {
+      prev: 'Предыдущее изображение',
+      next: 'Следующее изображение',
+      close: 'Закрыть'
+    },
+    da: {
+      prev: 'Forrige billede',
+      next: 'Næste billede',
+      close: 'Tæt'
+    },
+    nl: {
+      prev: 'Vorig beeld',
+      next: 'Volgend beeld',
+      close: 'Dichtbij'
+    }
+  }
+
   /*-- Append the actual lightbox to the HTML-body --*/
   var alb_overlay = document.createElement("div");
   alb_overlay.id = "alb-overlay";
@@ -116,13 +166,16 @@ function ALightBox(options) {
 
   var alb_i_prev = document.createElement("span");
   alb_i_prev.id = "alb-i-prev";
+  alb_i_prev.title = language[settings.language]["prev"];
 
   var alb_i_close = document.createElement("span");
   alb_i_close.id = "alb-i-close";
+  alb_i_close.title = language[settings.language]["close"];
 
   var alb_i_next = document.createElement("span");
   alb_i_next.id = "alb-i-next";
-  
+  alb_i_next.title = language[settings.language]["next"];
+
   nav.appendChild(alb_i_prev);
   nav.appendChild(alb_i_close);
   nav.appendChild(alb_i_next);
