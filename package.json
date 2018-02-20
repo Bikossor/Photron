@@ -4,7 +4,7 @@
   "description": "An easy-to-use lightbox",
   "scripts": {
     "test": "jest",
-    "build": "babel src -d dist --eval --presets=minify"
+    "build": "npx babel src/ALightBox.js --out-file dist/ALightBox.min.js --eval --presets=minify"
   },
   "repository": {
     "type": "git",
