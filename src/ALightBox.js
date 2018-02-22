@@ -196,6 +196,42 @@ function ALightBox(options) {
   var body = document.getElementsByTagName("body")[0];
   body.appendChild(albOverlay);
 
+  function loadContent(item) {
+    var tag = item.localName;
+
+    if (tag === "a") {
+      var videoID = $(item).attr("href").match(/^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/)[2];
+      albContent.innerHTML = "<iframe src='https://www.youtube.com/embed/' + videoID + '?badge=0&html5=1' width='1280' height='720' frameborder='0' allowfullscreen></iframe>";
+    } else if (tag === "img") {
+      albContent.innerHTML = "<img src='' + item.src + ''/>";
+    }
+    return false;
+  }
+
+  function update() {
+    loadContent(items[index]);
+
+    if (items[index].dataset.title && settings.showImageTitle) {
+      document.title = docTitle + " - " + items[index].dataset.title;
+    }
+    else {
+      document.title = docTitle;
+    }
+    
+    /* TODO:    
+    if ($(items[index]).parent().data('title') && settings.showGalleryTitle)
+      $('#alb-footer').html(galleryTitle + ': ' + (index + 1) + ' / ' + totalItems);
+    else
+      $('#alb-footer').html((index + 1) + ' / ' + totalItems);
+    */
+
+    return false;
+  }
+
+  function getIndex(item, collection) {
+    return [].slice.call(document.getElementsByClassName(collection)).indexOf(document.getElementById(item));
+  }
+  
   function open(obj) {
     if(!lightboxOpen) {
       lightboxOpen = true;
@@ -231,42 +267,6 @@ function ALightBox(options) {
     };
   }
 
-  function getIndex(item, collection) {
-    return [].slice.call(document.getElementsByClassName(collection)).indexOf(document.getElementById(item));
-  }
-
-  function loadContent(item) {
-    var tag = item.localName;
-
-    if (tag === "a") {
-      var videoID = $(item).attr("href").match(/^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/)[2];
-      albContent.innerHTML = "<iframe src='https://www.youtube.com/embed/' + videoID + '?badge=0&html5=1' width='1280' height='720' frameborder='0' allowfullscreen></iframe>";
-    } else if (tag === "img") {
-      albContent.innerHTML = "<img src='' + item.src + ''/>";
-    }
-    return false;
-  }
-
-  function update() {
-    loadContent(items[index]);
-
-    if (items[index].dataset.title && settings.showImageTitle) {
-      document.title = docTitle + " - " + items[index].dataset.title;
-    }
-    else {
-      document.title = docTitle;
-    }
-    
-    /* TODO:    
-    if ($(items[index]).parent().data('title') && settings.showGalleryTitle)
-      $('#alb-footer').html(galleryTitle + ': ' + (index + 1) + ' / ' + totalItems);
-    else
-      $('#alb-footer').html((index + 1) + ' / ' + totalItems);
-    */
-
-    return false;
-  }
-  
   function close() {
     if(lightboxOpen) {
       lightboxOpen = false;
