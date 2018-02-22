@@ -220,8 +220,8 @@ function ALightBox(options) {
   function update() {
     loadContent(items[index]);
 
-    if (items[index].dataset["title"] && settings.showImageTitle) {
-      document.title = docTitle + ' - ' + items[index].dataset["title"];
+    if (items[index].dataset.title && settings.showImageTitle) {
+      document.title = docTitle + ' - ' + items[index].dataset.title;
     }
     else {
       document.title = docTitle;
