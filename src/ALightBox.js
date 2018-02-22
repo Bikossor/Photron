@@ -8,13 +8,13 @@ function ALightBox(options) {
     language: navigator.language.substr(0, 2),
     roundRobin: true,
     showYoutubeThumbnails: false
-  }
+  };
 
   /*-- Variables --*/
   var settings = Object.assign(defaults, options),
     docTitle = document.title,
-    galleryTitle = '',
-    itemSelector = 'alb-item',
+    galleryTitle = "",
+    itemSelector = "alb-item",
     index = 0,
     items = document.getElementsByClassName(itemSelector),
     totalItems = items.length,
@@ -24,7 +24,7 @@ function ALightBox(options) {
   var JOSH=function(){"use strict";return{parse:function(r){if("object"==typeof r){var n="";for(var t in r){n+=t+"{";for(var e in r[t])n+=e+":"+r[t][e]+";";n+="}"}return n}}}}();
   var head = document.getElementsByTagName("head")[0];
   var style = document.createElement("style");
-  style.innerHTML = JOSH.parse({
+  style.textContent = JOSH.parse({
     "#alb-overlay": {
       "display": "flex",
       "position": "fixed",
@@ -98,100 +98,112 @@ function ALightBox(options) {
   /*-- Languages --*/
   var language = {
     de: {
-      prev: 'Vorheriges Bild',
-      next: 'Nächstes Bild',
-      close: 'Schließen'
+      prev: "Vorheriges Bild",
+      next: "Nächstes Bild",
+      close: "Schließen"
     },
     en: {
-      prev: 'previous image',
-      next: 'next image',
-      close: 'close'
+      prev: "previous image",
+      next: "next image",
+      close: "close"
     },
     fr: {
-      prev: 'Image précédente',
-      next: 'Image suivante',
-      close: 'Fermer'
+      prev: "Image précédente",
+      next: "Image suivante",
+      close: "Fermer"
     },
     es: {
-      prev: 'Imagen anterior',
-      next: 'Siguiente imagen',
-      close: 'Cerca'
+      prev: "Imagen anterior",
+      next: "Siguiente imagen",
+      close: "Cerca"
     },
     it: {
-      prev: 'Immagine precedente',
-      next: 'Immagine successiva',
-      close: 'Vicino'
+      prev: "Immagine precedente",
+      next: "Immagine successiva",
+      close: "Vicino"
     },
     zh: {
-      prev: '上一张图片',
-      next: '下一图片',
-      close: '关'
+      prev: "上一张图片",
+      next: "下一图片",
+      close: "关"
     },
     ru: {
-      prev: 'Предыдущее изображение',
-      next: 'Следующее изображение',
-      close: 'Закрыть'
+      prev: "Предыдущее изображение",
+      next: "Следующее изображение",
+      close: "Закрыть"
     },
     da: {
-      prev: 'Forrige billede',
-      next: 'Næste billede',
-      close: 'Tæt'
+      prev: "Forrige billede",
+      next: "Næste billede",
+      close: "Tæt"
     },
     nl: {
-      prev: 'Vorig beeld',
-      next: 'Volgend beeld',
-      close: 'Dichtbij'
+      prev: "Vorig beeld",
+      next: "Volgend beeld",
+      close: "Dichtbij"
     }
   }
 
   /*-- Append the actual lightbox to the HTML-body --*/
-  var alb_overlay = document.createElement("div");
-  alb_overlay.id = "alb-overlay";
-  alb_overlay.addEventListener("webkitAnimationEnd", animationEnd, false);
-  alb_overlay.addEventListener("animationend", animationEnd, false);
-  alb_overlay.addEventListener("oanimationend", animationEnd, false);
+  var albOverlay = document.createElement("div");
+  albOverlay.id = "alb-overlay";
+
+  function animationEnd() {
+    if(arguments[0].animationName === "close-animation" && albOverlay.classList.contains("closing")) {
+      albOverlay.classList.remove("closing");
+      albContent.innerHTML = "";
+      lightboxOpen = false;
+    }
+    else if(arguments[0].animationName === "open-animation" && albOverlay.classList.contains("opening")) {
+      lightboxOpen = true;
+    }
+  }
+
+  albOverlay.addEventListener("webkitAnimationEnd", animationEnd, false);
+  albOverlay.addEventListener("animationend", animationEnd, false);
+  albOverlay.addEventListener("oanimationend", animationEnd, false);
 
   var nav = document.createElement("nav");
 
-  var alb_i_prev = document.createElement("span");
-  alb_i_prev.id = "alb-i-prev";
-  alb_i_prev.title = language[settings.language]["prev"];
-  alb_i_prev.innerHTML = '<svg height="32" viewBox="0 0 512 512" width="32" xmlns="http://www.w3.org/2000/svg"><polygon points="352,128.4 319.7,96 160,256 160,256 160,256 319.7,416 352,383.6 224.7,256 "/></svg>';
+  var albPrev = document.createElement("span");
+  albPrev.id = "alb-i-prev";
+  albPrev.title = language[settings.language]["prev"];
+  albPrev.innerHTML = '<svg height="32" viewBox="0 0 512 512" width="32" xmlns="http://www.w3.org/2000/svg"><polygon points="352,128.4 319.7,96 160,256 160,256 160,256 319.7,416 352,383.6 224.7,256 "/></svg>';
 
-  var alb_i_close = document.createElement("span");
-  alb_i_close.id = "alb-i-close";
-  alb_i_close.title = language[settings.language]["close"];
-  alb_i_close.innerHTML = '<svg height="32" viewBox="0 0 48 48" width="32" xmlns="http://www.w3.org/2000/svg"><path d="M38 12.83l-2.83-2.83-11.17 11.17-11.17-11.17-2.83 2.83 11.17 11.17-11.17 11.17 2.83 2.83 11.17-11.17 11.17 11.17 2.83-2.83-11.17-11.17z"/><path d="M0 0h48v48h-48z" fill-opacity="0"/></svg>';
+  var albClose = document.createElement("span");
+  albClose.id = "alb-i-close";
+  albClose.title = language[settings.language]["close"];
+  albClose.innerHTML = '<svg height="32" viewBox="0 0 48 48" width="32" xmlns="http://www.w3.org/2000/svg"><path d="M38 12.83l-2.83-2.83-11.17 11.17-11.17-11.17-2.83 2.83 11.17 11.17-11.17 11.17 2.83 2.83 11.17-11.17 11.17 11.17 2.83-2.83-11.17-11.17z"/><path d="M0 0h48v48h-48z" fill-opacity="0"/></svg>';
 
-  var alb_i_next = document.createElement("span");
-  alb_i_next.id = "alb-i-next";
-  alb_i_next.title = language[settings.language]["next"];
-  alb_i_next.innerHTML = '<svg height="32" viewBox="0 0 512 512" width="32" xmlns="http://www.w3.org/2000/svg"><polygon points="160,128.4 192.3,96 352,256 352,256 352,256 192.3,416 160,383.6 287.3,256 "/></svg>';
+  var albNext = document.createElement("span");
+  albNext.id = "alb-i-next";
+  albNext.title = language[settings.language]["next"];
+  albNext.innerHTML = '<svg height="32" viewBox="0 0 512 512" width="32" xmlns="http://www.w3.org/2000/svg"><polygon points="160,128.4 192.3,96 352,256 352,256 352,256 192.3,416 160,383.6 287.3,256 "/></svg>';
 
-  nav.appendChild(alb_i_prev);
-  nav.appendChild(alb_i_close);
-  nav.appendChild(alb_i_next);
+  nav.appendChild(albPrev);
+  nav.appendChild(albClose);
+  nav.appendChild(albNext);
 
-  var alb_content = document.createElement("div");
-  alb_content.id = "alb-content";
+  var albContent = document.createElement("div");
+  albContent.id = "alb-content";
 
-  var alb_footer = document.createElement("div");
+  var albFooter = document.createElement("div");
 
-  alb_overlay.appendChild(nav);  
-  alb_overlay.appendChild(alb_content);
-  alb_overlay.appendChild(alb_footer);
+  albOverlay.appendChild(nav);  
+  albOverlay.appendChild(albContent);
+  albOverlay.appendChild(albFooter);
   
   var body = document.getElementsByTagName("body")[0];
-  body.appendChild(alb_overlay);
+  body.appendChild(albOverlay);
 
-  var alb_content = document.getElementById("alb-content");
+  var albContent = document.getElementById("alb-content");
 
   for (var i = 0; i < totalItems; i++) {
     if (items[i].localName === 'a' && settings.showYoutubeThumbnails) {
       var videoID = items[i].href.match(/^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/)[2];
 
       items[i].innerHTML = '<img src="https://i.ytimg.com/vi/' + videoID + '/maxresdefault.jpg"/>';
-      alb_content.innerHTML = '<iframe src="https://www.youtube.com/embed/' + videoID + '?badge=0&html5=1" width="1280" height="720" frameborder="0" allowfullscreen></iframe>';
+      albContent.innerHTML = '<iframe src="https://www.youtube.com/embed/' + videoID + '?badge=0&html5=1" width="1280" height="720" frameborder="0" allowfullscreen></iframe>';
     }
 
     items[i].id = totalItemsCount++;
@@ -205,21 +217,6 @@ function ALightBox(options) {
     return [].slice.call(document.getElementsByClassName(collection)).indexOf(document.getElementById(item));
   }
 
-  function open(obj) {
-    if(!lightboxOpen) {
-      lightboxOpen = true;
-      galleryTitle = obj.target.parentNode.dataset["title"];
-      index = getIndex(obj.target.id, "alb-item"); //Doesn't work on a-tags yet
-      
-      if(!alb_overlay.classList.contains("closing")) {
-        alb_overlay.classList.add("opening");
-      }      
-      
-      update();  
-    }
-    return false;
-  }
-  
   function update() {
     loadContent(items[index]);
 
@@ -240,29 +237,33 @@ function ALightBox(options) {
     return false;
   }
 
+  function open(obj) {
+    if(!lightboxOpen) {
+      lightboxOpen = true;
+      galleryTitle = obj.target.parentNode.dataset["title"];
+      index = getIndex(obj.target.id, "alb-item"); //Doesn't work on a-tags yet
+      
+      if(!albOverlay.classList.contains("closing")) {
+        albOverlay.classList.add("opening");
+      }      
+      
+      update();  
+    }
+    return false;
+  }
+
   function close() {
     if(lightboxOpen) {
       lightboxOpen = false;
       
-      alb_overlay.classList.remove("opening");
-      alb_overlay.classList.add("closing");
+      albOverlay.classList.remove("opening");
+      albOverlay.classList.add("closing");
       
       if (document.title != docTitle) {
         document.title = docTitle;
       }
     }
     return false;
-  }
-
-  function animationEnd() {
-    if(arguments[0].animationName === "close-animation" && alb_overlay.classList.contains("closing")) {
-      alb_overlay.classList.remove("closing");
-      alb_content.innerHTML = "";
-      lightboxOpen = false;
-    }
-    else if(arguments[0].animationName === "open-animation" && alb_overlay.classList.contains("opening")) {
-      lightboxOpen = true;
-    }
   }
 
   function next() {
@@ -292,9 +293,9 @@ function ALightBox(options) {
 
     if (tag === 'a') {
       var videoID = $(item).attr('href').match(/^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/)[2];
-      alb_content.innerHTML = '<iframe src="https://www.youtube.com/embed/' + videoID + '?badge=0&html5=1" width="1280" height="720" frameborder="0" allowfullscreen></iframe>';
+      albContent.innerHTML = '<iframe src="https://www.youtube.com/embed/' + videoID + '?badge=0&html5=1" width="1280" height="720" frameborder="0" allowfullscreen></iframe>';
     } else if (tag === 'img') {
-      alb_content.innerHTML = '<img src="' + item.src + '"/>';
+      albContent.innerHTML = '<img src="' + item.src + '"/>';
     }
     return false;
   }
