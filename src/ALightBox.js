@@ -142,7 +142,7 @@ function ALightBox(options) {
       next: "Volgend beeld",
       close: "Dichtbij"
     }
-  }
+  };
 
   /*-- Append the actual lightbox to the HTML-body --*/
   var albOverlay = document.createElement("div");
@@ -238,7 +238,7 @@ function ALightBox(options) {
     loadContent(items[index]);
 
     if (items[index].dataset.title && settings.showImageTitle) {
-      document.title = docTitle + ' - ' + items[index].dataset.title;
+      document.title = docTitle + " - " + items[index].dataset.title;
     }
     else {
       document.title = docTitle;
@@ -321,14 +321,17 @@ function ALightBox(options) {
     var diffY = touchY - e.touches[0].clientY;
 
     if (Math.abs(diffX) > Math.abs(diffY)) {
-      if (diffX > 0)
+      if (diffX > 0) {
         next();
-      else
+      }        
+      else {
         previous();
+      }
     }
     else {
-      if (diffY > 0)
+      if (diffY > 0) {
         close();
+      }
     }
 
     touchX = null;
@@ -346,8 +349,14 @@ function ALightBox(options) {
   };
 
   document.onkeypress = function(e) {
-    if (e.keyCode === 39) next();
-    if (e.keyCode === 37) previous();
-    if (e.keyCode === 27) close();
+    if (e.keyCode === 39) {
+      next();
+    }
+    if (e.keyCode === 37) {
+      previous();
+    }
+    if (e.keyCode === 27) {
+      close();
+    }
   };
-};
+}
