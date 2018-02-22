@@ -196,8 +196,21 @@ function ALightBox(options) {
   var body = document.getElementsByTagName("body")[0];
   body.appendChild(albOverlay);
 
-  var albContent = document.getElementById("alb-content");
-
+  function open(obj) {
+    if(!lightboxOpen) {
+      lightboxOpen = true;
+      galleryTitle = obj.target.parentNode.dataset["title"];
+      index = getIndex(obj.target.id, "alb-item"); //Doesn't work on a-tags yet
+      
+      if(!albOverlay.classList.contains("closing")) {
+        albOverlay.classList.add("opening");
+      }      
+      
+      update();  
+    }
+    return false;
+  }
+  
   function itemClicked(item) {
     item.preventDefault();
     open(item);
@@ -253,22 +266,7 @@ function ALightBox(options) {
 
     return false;
   }
-
-  function open(obj) {
-    if(!lightboxOpen) {
-      lightboxOpen = true;
-      galleryTitle = obj.target.parentNode.dataset["title"];
-      index = getIndex(obj.target.id, "alb-item"); //Doesn't work on a-tags yet
-      
-      if(!albOverlay.classList.contains("closing")) {
-        albOverlay.classList.add("opening");
-      }      
-      
-      update();  
-    }
-    return false;
-  }
-
+  
   function close() {
     if(lightboxOpen) {
       lightboxOpen = false;
