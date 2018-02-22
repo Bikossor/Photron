@@ -168,17 +168,17 @@ function ALightBox(options) {
   var albPrev = document.createElement("span");
   albPrev.id = "alb-i-prev";
   albPrev.title = language[settings.language]["prev"];
-  albPrev.innerHTML = '<svg height="32" viewBox="0 0 512 512" width="32" xmlns="http://www.w3.org/2000/svg"><polygon points="352,128.4 319.7,96 160,256 160,256 160,256 319.7,416 352,383.6 224.7,256 "/></svg>';
+  albPrev.innerHTML = "<svg height='32' viewBox='0 0 512 512' width='32' xmlns='http://www.w3.org/2000/svg'><polygon points='352,128.4 319.7,96 160,256 160,256 160,256 319.7,416 352,383.6 224.7,256 '/></svg>";
 
   var albClose = document.createElement("span");
   albClose.id = "alb-i-close";
   albClose.title = language[settings.language]["close"];
-  albClose.innerHTML = '<svg height="32" viewBox="0 0 48 48" width="32" xmlns="http://www.w3.org/2000/svg"><path d="M38 12.83l-2.83-2.83-11.17 11.17-11.17-11.17-2.83 2.83 11.17 11.17-11.17 11.17 2.83 2.83 11.17-11.17 11.17 11.17 2.83-2.83-11.17-11.17z"/><path d="M0 0h48v48h-48z" fill-opacity="0"/></svg>';
+  albClose.innerHTML = "<svg height='32' viewBox='0 0 48 48' width='32' xmlns='http://www.w3.org/2000/svg'><path d='M38 12.83l-2.83-2.83-11.17 11.17-11.17-11.17-2.83 2.83 11.17 11.17-11.17 11.17 2.83 2.83 11.17-11.17 11.17 11.17 2.83-2.83-11.17-11.17z'/><path d='M0 0h48v48h-48z' fill-opacity='0'/></svg>";
 
   var albNext = document.createElement("span");
   albNext.id = "alb-i-next";
   albNext.title = language[settings.language]["next"];
-  albNext.innerHTML = '<svg height="32" viewBox="0 0 512 512" width="32" xmlns="http://www.w3.org/2000/svg"><polygon points="160,128.4 192.3,96 352,256 352,256 352,256 192.3,416 160,383.6 287.3,256 "/></svg>';
+  albNext.innerHTML = "<svg height='32' viewBox='0 0 512 512' width='32' xmlns='http://www.w3.org/2000/svg'><polygon points='160,128.4 192.3,96 352,256 352,256 352,256 192.3,416 160,383.6 287.3,256 '/></svg>";
 
   nav.appendChild(albPrev);
   nav.appendChild(albClose);
@@ -199,11 +199,11 @@ function ALightBox(options) {
   var albContent = document.getElementById("alb-content");
 
   for (var i = 0; i < totalItems; i++) {
-    if (items[i].localName === 'a' && settings.showYoutubeThumbnails) {
+    if (items[i].localName === "a" && settings.showYoutubeThumbnails) {
       var videoID = items[i].href.match(/^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/)[2];
 
-      items[i].innerHTML = '<img src="https://i.ytimg.com/vi/' + videoID + '/maxresdefault.jpg"/>';
-      albContent.innerHTML = '<iframe src="https://www.youtube.com/embed/' + videoID + '?badge=0&html5=1" width="1280" height="720" frameborder="0" allowfullscreen></iframe>';
+      items[i].innerHTML = "<img src='https://i.ytimg.com/vi/' + videoID + '/maxresdefault.jpg'/>";
+      albContent.innerHTML = "<iframe src='https://www.youtube.com/embed/' + videoID + '?badge=0&html5=1' width='1280' height='720' frameborder='0' allowfullscreen></iframe>";
     }
 
     items[i].id = totalItemsCount++;
@@ -291,11 +291,11 @@ function ALightBox(options) {
   function loadContent(item) {
     var tag = item.localName;
 
-    if (tag === 'a') {
-      var videoID = $(item).attr('href').match(/^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/)[2];
-      albContent.innerHTML = '<iframe src="https://www.youtube.com/embed/' + videoID + '?badge=0&html5=1" width="1280" height="720" frameborder="0" allowfullscreen></iframe>';
-    } else if (tag === 'img') {
-      albContent.innerHTML = '<img src="' + item.src + '"/>';
+    if (tag === "a") {
+      var videoID = $(item).attr("href").match(/^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/)[2];
+      albContent.innerHTML = "<iframe src='https://www.youtube.com/embed/' + videoID + '?badge=0&html5=1' width='1280' height='720' frameborder='0' allowfullscreen></iframe>";
+    } else if (tag === "img") {
+      albContent.innerHTML = "<img src='' + item.src + ''/>";
     }
     return false;
   }
@@ -308,12 +308,12 @@ function ALightBox(options) {
   var touchX = null;
   var touchY = null;
 
-  document.addEventListener('touchstart', function(e) {
+  document.addEventListener("touchstart", function(e) {
     touchX = e.touches[0].clientX;
     touchY = e.touches[0].clientY;
   });
 
-  document.addEventListener('touchmove', function(e) {
+  document.addEventListener("touchmove", function(e) {
     if (!touchX || !touchY)
       return;
 
