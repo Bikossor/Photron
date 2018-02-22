@@ -148,6 +148,9 @@ function ALightBox(options) {
   var albOverlay = document.createElement("div");
   albOverlay.id = "alb-overlay";
 
+  var albContent = document.createElement("div");
+  albContent.id = "alb-content";
+
   function animationEnd() {
     if(arguments[0].animationName === "close-animation" && albOverlay.classList.contains("closing")) {
       albOverlay.classList.remove("closing");
@@ -184,9 +187,6 @@ function ALightBox(options) {
   nav.appendChild(albClose);
   nav.appendChild(albNext);
 
-  var albContent = document.createElement("div");
-  albContent.id = "alb-content";
-
   var albFooter = document.createElement("div");
 
   albOverlay.appendChild(nav);  
@@ -197,6 +197,11 @@ function ALightBox(options) {
   body.appendChild(albOverlay);
 
   var albContent = document.getElementById("alb-content");
+
+  function itemClicked(item) {
+    item.preventDefault();
+    open(item);
+  }
 
   for (var i = 0; i < totalItems; i++) {
     if (items[i].localName === "a" && settings.showYoutubeThumbnails) {
@@ -215,6 +220,18 @@ function ALightBox(options) {
 
   function getIndex(item, collection) {
     return [].slice.call(document.getElementsByClassName(collection)).indexOf(document.getElementById(item));
+  }
+
+  function loadContent(item) {
+    var tag = item.localName;
+
+    if (tag === "a") {
+      var videoID = $(item).attr("href").match(/^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/)[2];
+      albContent.innerHTML = "<iframe src='https://www.youtube.com/embed/' + videoID + '?badge=0&html5=1' width='1280' height='720' frameborder='0' allowfullscreen></iframe>";
+    } else if (tag === "img") {
+      albContent.innerHTML = "<img src='' + item.src + ''/>";
+    }
+    return false;
   }
 
   function update() {
@@ -259,7 +276,7 @@ function ALightBox(options) {
       albOverlay.classList.remove("opening");
       albOverlay.classList.add("closing");
       
-      if (document.title != docTitle) {
+      if (document.title !== docTitle) {
         document.title = docTitle;
       }
     }
@@ -288,23 +305,6 @@ function ALightBox(options) {
     return false;
   }
 
-  function loadContent(item) {
-    var tag = item.localName;
-
-    if (tag === "a") {
-      var videoID = $(item).attr("href").match(/^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/)[2];
-      albContent.innerHTML = "<iframe src='https://www.youtube.com/embed/' + videoID + '?badge=0&html5=1' width='1280' height='720' frameborder='0' allowfullscreen></iframe>";
-    } else if (tag === "img") {
-      albContent.innerHTML = "<img src='' + item.src + ''/>";
-    }
-    return false;
-  }
-
-  function itemClicked(item) {
-    item.preventDefault();
-    open(item);
-  }
-
   var touchX = null;
   var touchY = null;
 
@@ -321,10 +321,10 @@ function ALightBox(options) {
     var diffY = touchY - e.touches[0].clientY;
 
     if (Math.abs(diffX) > Math.abs(diffY)) {
-        if (diffX > 0)
-          next();
-        else
-          previous();
+      if (diffX > 0)
+        next();
+      else
+        previous();
     }
     else {
       if (diffY > 0)
