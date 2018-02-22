@@ -303,7 +303,7 @@ function ALightBox(options) {
   function itemClicked(item) {
     item.preventDefault();
     open(item);
-  };
+  }
 
   var touchX = null;
   var touchY = null;
@@ -317,7 +317,7 @@ function ALightBox(options) {
     if (!touchX || !touchY)
       return;
 
-    var diffX = touchX - e.touches[0].clientX;;
+    var diffX = touchX - e.touches[0].clientX;
     var diffY = touchY - e.touches[0].clientY;
 
     if (Math.abs(diffX) > Math.abs(diffY)) {
