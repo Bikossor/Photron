@@ -21,80 +21,6 @@ function ALightBox(options) {
     totalItemsCount = 0,
     lightboxOpen = false;
   
-  var JOSH=function(){"use strict";return{parse:function(r){if("object"==typeof r){var n="";for(var t in r){n+=t+"{";for(var e in r[t])n+=e+":"+r[t][e]+";";n+="}"}return n}}}}();
-  var head = document.getElementsByTagName("head")[0];
-  var style = document.createElement("style");
-  style.textContent = JOSH.parse({
-    "#alb-overlay": {
-      "display": "flex",
-      "position": "fixed",
-      "top": 0,
-      "left": 0,
-      "z-index": 10000,
-      "background": "rgba(0, 0, 0, 0.8)",
-      "width": "100%",
-      "height": "100%",
-      "transform": "translateY(-100%)",
-    },
-    "#alb-overlay nav": {
-      "-webkit-box-pack": "justify",
-      "-ms-flex-pack": "justify",
-      "display": "-webkit-box",
-      "display": "-ms-flexbox",
-      "display": "flex",
-      "justify-content": "space-between",
-      "width": "100%",
-      "height": "48px",
-      "background": "rgba(0, 0, 0, 0.5)"
-    },
-    "#alb-content": {
-      "-webkit-box-align": "center",
-      "-ms-flex-align": "center",
-      "-webkit-box-pack": "center",
-      "-ms-flex-pack": "center",
-      "display": "-webkit-box",
-      "display": "-ms-flexbox",
-      "display": "flex",
-      "position": "absolute",
-      "top": "48px",
-      "bottom": "48px",
-      "align-items": "center",
-      "justify-content": "center",
-      "width": "100%",
-      "overflow": "hidden"
-    },
-    "#alb-content img, #alb-content iframe": {
-      "max-width": "calc(100% - 4rem)",
-      "max-height": "100%"
-    },
-    "#alb-footer": {
-      "position": "absolute",
-      "bottom": 0,
-      "width": "100%",
-      "height": "48px",
-      "color": "#fff",
-      "font-family": "'Roboto', Arial",
-      "font-size": "1.2rem",
-      "line-height": "48px",
-      "text-align": "center",
-      "text-shadow": "1px 1px 2px #000"
-    },    
-    "#alb-i-prev, #alb-i-close, #alb-i-next": {
-      "display": "inline-block",
-      "opacity": "0.6",
-      "cursor": "pointer",
-      "padding": "8px",
-      "width": "32px",
-      "height": "32px",
-      "fill": "#fff"
-    },
-    "#alb-i-prev:hover, #alb-i-close:hover, #alb-i-next:hover": {
-      "opacity": "1"
-    }
-  });
-
-  head.appendChild(style);
-
   /*-- Languages --*/
   var language = {
     de: {
@@ -203,7 +129,7 @@ function ALightBox(options) {
       var videoID = $(item).attr("href").match(/^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/)[2];
       albContent.innerHTML = "<iframe src='https://www.youtube.com/embed/' + videoID + '?badge=0&html5=1' width='1280' height='720' frameborder='0' allowfullscreen></iframe>";
     } else if (tag === "img") {
-      albContent.innerHTML = "<img src='' + item.src + ''/>";
+      albContent.innerHTML = "<img src='" + item.src + "'/>";
     }
     return false;
   }
