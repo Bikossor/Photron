@@ -12,11 +12,12 @@ function Photron(options) {
 
 	/*-- Variables --*/
 	var settings = Object.assign(defaults, options),
-		docTitle = document.title,
+		doc = document,
+		docTitle = doc.title,
 		galleryTitle = "",
 		itemSelector = "photron-item",
 		index = 0,
-		items = document.getElementsByClassName(itemSelector),
+		items = doc.getElementsByClassName(itemSelector),
 		totalItems = items.length,
 		totalItemsCount = 0,
 		lightboxOpen = false;
@@ -71,10 +72,10 @@ function Photron(options) {
 	};
 
 	/*-- Append the actual lightbox to the HTML-body --*/
-	var albOverlay = document.createElement("div");
+	var albOverlay = doc.createElement("div");
 	albOverlay.id = "photron-overlay";
 
-	var albContent = document.createElement("div");
+	var albContent = doc.createElement("div");
 	albContent.id = "photron-content";
 
 	function animationEnd() {
@@ -91,19 +92,19 @@ function Photron(options) {
 	albOverlay.addEventListener("animationend", animationEnd, false);
 	albOverlay.addEventListener("oanimationend", animationEnd, false);
 
-	var nav = document.createElement("nav");
+	var nav = doc.createElement("nav");
 
-	var albPrev = document.createElement("span");
+	var albPrev = doc.createElement("span");
 	albPrev.id = "photron-i-prev";
 	albPrev.title = language[settings.language]["prev"];
 	albPrev.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M352 128l-32-32-160 160 160 160 32-32-127-128z"/></svg>';
 
-	var albClose = document.createElement("span");
+	var albClose = doc.createElement("span");
 	albClose.id = "photron-i-close";
 	albClose.title = language[settings.language]["close"];
 	albClose.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path d="M38 13l-3-3-11 11-11-11-3 3 11 11-11 11 3 3 11-11 11 11 3-3-11-11z"/><path fill="none" d="M0 0h48v48H0z"/></svg>';
 
-	var albNext = document.createElement("span");
+	var albNext = doc.createElement("span");
 	albNext.id = "photron-i-next";
 	albNext.title = language[settings.language]["next"];
 	albNext.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M160 128l32-32 160 160-160 160-32-32 127-128z"/></svg>';
@@ -112,13 +113,13 @@ function Photron(options) {
 	nav.appendChild(albClose);
 	nav.appendChild(albNext);
 
-	var albFooter = document.createElement("div");
+	var albFooter = doc.createElement("div");
 
 	albOverlay.appendChild(nav);
 	albOverlay.appendChild(albContent);
 	albOverlay.appendChild(albFooter);
 
-	var body = document.getElementsByTagName("body")[0];
+	var body = doc.getElementsByTagName("body")[0];
 	body.appendChild(albOverlay);
 
 	function loadContent(item) {
@@ -137,9 +138,9 @@ function Photron(options) {
 		loadContent(items[index]);
 
 		if (items[index].dataset.title && settings.showImageTitle) {
-			document.title = docTitle + " - " + items[index].dataset.title;
+			doc.title = docTitle + " - " + items[index].dataset.title;
 		} else {
-			document.title = docTitle;
+			doc.title = docTitle;
 		}
 
 		/* TODO:    
@@ -153,7 +154,7 @@ function Photron(options) {
 	}
 
 	function getIndex(item, collection) {
-		return [].slice.call(document.getElementsByClassName(collection)).indexOf(document.getElementById(item));
+		return [].slice.call(doc.getElementsByClassName(collection)).indexOf(doc.getElementById(item));
 	}
 
 	function open(obj) {
@@ -198,8 +199,8 @@ function Photron(options) {
 			albOverlay.classList.remove("opening");
 			albOverlay.classList.add("closing");
 
-			if (document.title !== docTitle) {
-				document.title = docTitle;
+			if (doc.title !== docTitle) {
+				doc.title = docTitle;
 			}
 		}
 		return false;
@@ -230,12 +231,12 @@ function Photron(options) {
 	var touchX = null;
 	var touchY = null;
 
-	document.addEventListener("touchstart", function (e) {
+	doc.addEventListener("touchstart", function (e) {
 		touchX = e.touches[0].clientX;
 		touchY = e.touches[0].clientY;
 	});
 
-	document.addEventListener("touchmove", function (e) {
+	doc.addEventListener("touchmove", function (e) {
 		if (!touchX || !touchY)
 			return;
 
@@ -258,17 +259,17 @@ function Photron(options) {
 		touchY = null;
 	});
 
-	document.getElementById("photron-i-close").onclick = function () {
+	doc.getElementById("photron-i-close").onclick = function () {
 		close();
 	};
-	document.getElementById("photron-i-next").onclick = function () {
+	doc.getElementById("photron-i-next").onclick = function () {
 		next();
 	};
-	document.getElementById("photron-i-prev").onclick = function () {
+	doc.getElementById("photron-i-prev").onclick = function () {
 		previous();
 	};
 
-	document.onkeypress = function (e) {
+	doc.onkeypress = function (e) {
 		if (e.keyCode === 39) {
 			next();
 		}
