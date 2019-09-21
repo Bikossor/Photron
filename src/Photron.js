@@ -76,9 +76,7 @@ function Photron(options) {
 	albOverlay.id = "photron-overlay";
 
 	var albContent = doc.createElement("div");
-	albContent.id = "photron-content";
-
-	function animationEnd(event) {
+	albOverlay.onanimationend = function (event) {
 		if (event.animationName === "close-animation" && albOverlay.classList.contains("closing")) {
 			albOverlay.classList.remove("closing");
 			albContent.innerHTML = "";
@@ -86,11 +84,10 @@ function Photron(options) {
 		} else if (event.animationName === "open-animation" && albOverlay.classList.contains("opening")) {
 			lightboxOpen = true;
 		}
-	}
+	};
 
-	albOverlay.addEventListener("webkitAnimationEnd", animationEnd, false);
-	albOverlay.addEventListener("animationend", animationEnd, false);
-	albOverlay.addEventListener("oanimationend", animationEnd, false);
+	var albContent = doc.createElement("div");
+	albContent.id = "photron-content";
 
 	var nav = doc.createElement("nav");
 
@@ -98,16 +95,25 @@ function Photron(options) {
 	albPrev.id = "photron-i-prev";
 	albPrev.title = language[settings.language]["prev"];
 	albPrev.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M352 128l-32-32-160 160 160 160 32-32-127-128z"/></svg>';
+	albPrev.onclick = function () {
+		previous();
+	};
 
 	var albClose = doc.createElement("span");
 	albClose.id = "photron-i-close";
 	albClose.title = language[settings.language]["close"];
 	albClose.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path d="M38 13l-3-3-11 11-11-11-3 3 11 11-11 11 3 3 11-11 11 11 3-3-11-11z"/><path fill="none" d="M0 0h48v48H0z"/></svg>';
+	albClose.onclick = function () {
+		close();
+	};
 
 	var albNext = doc.createElement("span");
 	albNext.id = "photron-i-next";
 	albNext.title = language[settings.language]["next"];
 	albNext.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M160 128l32-32 160 160-160 160-32-32 127-128z"/></svg>';
+	albNext.onclick = function () {
+		next();
+	};
 
 	nav.appendChild(albPrev);
 	nav.appendChild(albClose);
@@ -231,17 +237,17 @@ function Photron(options) {
 	var touchX = null;
 	var touchY = null;
 
-	doc.addEventListener("touchstart", function (e) {
-		touchX = e.touches[0].clientX;
-		touchY = e.touches[0].clientY;
-	});
+	doc.ontouchstart = function (event) {
+		touchX = event.touches[0].clientX;
+		touchY = event.touches[0].clientY;
+	};
 
-	doc.addEventListener("touchmove", function (e) {
+	doc.ontouchmove = function (event) {
 		if (!touchX || !touchY)
 			return;
 
-		var diffX = touchX - e.touches[0].clientX;
-		var diffY = touchY - e.touches[0].clientY;
+		var diffX = touchX - event.touches[0].clientX;
+		var diffY = touchY - event.touches[0].clientY;
 
 		if (Math.abs(diffX) > Math.abs(diffY)) {
 			if (diffX > 0) {
@@ -257,16 +263,6 @@ function Photron(options) {
 
 		touchX = null;
 		touchY = null;
-	});
-
-	doc.getElementById("photron-i-close").onclick = function () {
-		close();
-	};
-	doc.getElementById("photron-i-next").onclick = function () {
-		next();
-	};
-	doc.getElementById("photron-i-prev").onclick = function () {
-		previous();
 	};
 
 	doc.onkeypress = function (e) {
