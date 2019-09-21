@@ -14,7 +14,7 @@ function Photron(options) {
   var settings = Object.assign(defaults, options),
     docTitle = document.title,
     galleryTitle = "",
-    itemSelector = "alb-item",
+    itemSelector = "photron-item",
     index = 0,
     items = document.getElementsByClassName(itemSelector),
     totalItems = items.length,
@@ -72,10 +72,10 @@ function Photron(options) {
 
   /*-- Append the actual lightbox to the HTML-body --*/
   var albOverlay = document.createElement("div");
-  albOverlay.id = "alb-overlay";
+  albOverlay.id = "photron-overlay";
 
   var albContent = document.createElement("div");
-  albContent.id = "alb-content";
+  albContent.id = "photron-content";
 
   function animationEnd() {
     if(arguments[0].animationName === "close-animation" && albOverlay.classList.contains("closing")) {
@@ -95,17 +95,17 @@ function Photron(options) {
   var nav = document.createElement("nav");
 
   var albPrev = document.createElement("span");
-  albPrev.id = "alb-i-prev";
+  albPrev.id = "photron-i-prev";
   albPrev.title = language[settings.language]["prev"];
   albPrev.innerHTML = "<svg height='32' viewBox='0 0 512 512' width='32' xmlns='http://www.w3.org/2000/svg'><polygon points='352,128.4 319.7,96 160,256 160,256 160,256 319.7,416 352,383.6 224.7,256 '/></svg>";
 
   var albClose = document.createElement("span");
-  albClose.id = "alb-i-close";
+  albClose.id = "photron-i-close";
   albClose.title = language[settings.language]["close"];
   albClose.innerHTML = "<svg height='32' viewBox='0 0 48 48' width='32' xmlns='http://www.w3.org/2000/svg'><path d='M38 12.83l-2.83-2.83-11.17 11.17-11.17-11.17-2.83 2.83 11.17 11.17-11.17 11.17 2.83 2.83 11.17-11.17 11.17 11.17 2.83-2.83-11.17-11.17z'/><path d='M0 0h48v48h-48z' fill-opacity='0'/></svg>";
 
   var albNext = document.createElement("span");
-  albNext.id = "alb-i-next";
+  albNext.id = "photron-i-next";
   albNext.title = language[settings.language]["next"];
   albNext.innerHTML = "<svg height='32' viewBox='0 0 512 512' width='32' xmlns='http://www.w3.org/2000/svg'><polygon points='160,128.4 192.3,96 352,256 352,256 352,256 192.3,416 160,383.6 287.3,256 '/></svg>";
 
@@ -146,9 +146,9 @@ function Photron(options) {
     
     /* TODO:    
     if ($(items[index]).parent().data('title') && settings.showGalleryTitle)
-      $('#alb-footer').html(galleryTitle + ': ' + (index + 1) + ' / ' + totalItems);
+      $('#photron-footer').html(galleryTitle + ': ' + (index + 1) + ' / ' + totalItems);
     else
-      $('#alb-footer').html((index + 1) + ' / ' + totalItems);
+      $('#photron-footer').html((index + 1) + ' / ' + totalItems);
     */
 
     return false;
@@ -162,7 +162,7 @@ function Photron(options) {
     if(!lightboxOpen) {
       lightboxOpen = true;
       galleryTitle = obj.target.parentNode.dataset["title"];
-      index = getIndex(obj.target.id, "alb-item"); //Doesn't work on a-tags yet
+      index = getIndex(obj.target.id, "photron-item"); //Doesn't work on a-tags yet
       
       if(!albOverlay.classList.contains("closing")) {
         albOverlay.classList.add("opening");
@@ -262,13 +262,13 @@ function Photron(options) {
     touchY = null;
   });
 
-  document.getElementById("alb-i-close").onclick = function() {
+  document.getElementById("photron-i-close").onclick = function() {
     close();
   };
-  document.getElementById("alb-i-next").onclick = function() {
+  document.getElementById("photron-i-next").onclick = function() {
     next();
   };
-  document.getElementById("alb-i-prev").onclick = function() {
+  document.getElementById("photron-i-prev").onclick = function() {
     previous();
   };
 

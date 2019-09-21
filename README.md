@@ -30,7 +30,7 @@ An easy-to-use lightbox.
 ```html
 <script src="./[PATH]/[TO]/Photron-1.0.0.js"></script>
 ```
-- Last you add the ``.alb-item`` class to every item inside the gallery
+- Last you add the ``.photron-item`` class to every item inside the gallery
 
 ### Usage
 ```html
