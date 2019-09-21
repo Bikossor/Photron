@@ -35,4 +35,6 @@ gulp.task("build-js", function (callback) {
 	], callback);
 });
 
-gulp.task("default", ["build-less", "build-js"]);
+gulp.task("default",
+	gulp.series("build-less", "build-js")
+);
