@@ -6,7 +6,6 @@ function Photron(options) {
 		showImageTitle: true,
 		showGalleryTitle: true,
 		roundRobin: true,
-		showYoutubeThumbnails: false,
 		labelPrevious: "Previous image",
 		labelClose: "Close",
 		labelNext: "Next image"
@@ -114,15 +113,11 @@ function Photron(options) {
 	appendChildrens(body, [albOverlay]);
 
 	function loadContent(item) {
-		var tag = item.localName;
-
-		if (tag === "a") {
-			var videoID = $(item).attr("href").match(/^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/)[2];
-			albContent.innerHTML = "<iframe src='https://www.youtube.com/embed/' + videoID + '?badge=0&html5=1' width='1280' height='720' frameborder='0' allowfullscreen></iframe>";
-		} else if (tag === "img") {
-			albContent.innerHTML = "<img src='" + item.src + "'/>";
+		if(item.localName !== "img") {
+			return;
 		}
-		return false;
+
+		albContent.innerHTML = "<img src='" + item.src + "'/>";
 	}
 
 	function update() {
@@ -162,13 +157,6 @@ function Photron(options) {
 	}
 
 	for (var i = 0; i < totalItems; i++) {
-		if (items[i].localName === "a" && settings.showYoutubeThumbnails) {
-			var videoID = items[i].href.match(/^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/)[2];
-
-			items[i].innerHTML = "<img src='https://i.ytimg.com/vi/' + videoID + '/maxresdefault.jpg'/>";
-			albContent.innerHTML = "<iframe src='https://www.youtube.com/embed/' + videoID + '?badge=0&html5=1' width='1280' height='720' frameborder='0' allowfullscreen></iframe>";
-		}
-
 		items[i].id = totalItemsCount++;
 
 		items[i].onclick = function (e) {
