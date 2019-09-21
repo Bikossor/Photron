@@ -71,9 +71,18 @@ function Photron(options) {
 		}
 	};
 
+	function buildElement(tagName, id) {
+		var resElement = doc.createElement(tagName);
+
+		if (id) {
+			resElement.id = id;
+		}
+
+		return resElement;
+	};
+
 	/*-- Append the actual lightbox to the HTML-body --*/
-	var albOverlay = doc.createElement("div");
-	albOverlay.id = "photron-overlay";
+	var albOverlay = buildElement("div", "photron-overlay");
 	albOverlay.onanimationend = function (event) {
 		if (event.animationName === "close-animation" && albOverlay.classList.contains("closing")) {
 			albOverlay.classList.remove("closing");
@@ -84,29 +93,25 @@ function Photron(options) {
 		}
 	};
 
-	var albContent = doc.createElement("div");
-	albContent.id = "photron-content";
+	var albContent = buildElement("div", "photron-content");
 
-	var nav = doc.createElement("nav");
+	var nav = buildElement("nav");
 
-	var albPrev = doc.createElement("span");
-	albPrev.id = "photron-i-prev";
+	var albPrev = buildElement("span", "photron-i-prev");
 	albPrev.title = language[settings.language]["prev"];
 	albPrev.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M352 128l-32-32-160 160 160 160 32-32-127-128z"/></svg>';
 	albPrev.onclick = function () {
 		previous();
 	};
 
-	var albClose = doc.createElement("span");
-	albClose.id = "photron-i-close";
+	var albClose = buildElement("span", "photron-i-close");
 	albClose.title = language[settings.language]["close"];
 	albClose.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path d="M38 13l-3-3-11 11-11-11-3 3 11 11-11 11 3 3 11-11 11 11 3-3-11-11z"/><path fill="none" d="M0 0h48v48H0z"/></svg>';
 	albClose.onclick = function () {
 		close();
 	};
 
-	var albNext = doc.createElement("span");
-	albNext.id = "photron-i-next";
+	var albNext = buildElement("span", "photron-i-next");
 	albNext.title = language[settings.language]["next"];
 	albNext.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M160 128l32-32 160 160-160 160-32-32 127-128z"/></svg>';
 	albNext.onclick = function () {
@@ -117,7 +122,7 @@ function Photron(options) {
 	nav.appendChild(albClose);
 	nav.appendChild(albNext);
 
-	var albFooter = doc.createElement("div");
+	var albFooter = buildElement("div");
 
 	albOverlay.appendChild(nav);
 	albOverlay.appendChild(albContent);
