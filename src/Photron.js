@@ -147,13 +147,6 @@ function Photron(options) {
 			doc.title = docTitle;
 		}
 
-		/* TODO:    
-		if ($(items[index]).parent().data('title') && settings.showGalleryTitle)
-		  $('#photron-footer').html(galleryTitle + ': ' + (index + 1) + ' / ' + totalItems);
-		else
-		  $('#photron-footer').html((index + 1) + ' / ' + totalItems);
-		*/
-
 		return false;
 	}
 
