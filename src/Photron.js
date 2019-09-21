@@ -78,12 +78,12 @@ function Photron(options) {
 	var albContent = doc.createElement("div");
 	albContent.id = "photron-content";
 
-	function animationEnd() {
-		if (arguments[0].animationName === "close-animation" && albOverlay.classList.contains("closing")) {
+	function animationEnd(event) {
+		if (event.animationName === "close-animation" && albOverlay.classList.contains("closing")) {
 			albOverlay.classList.remove("closing");
 			albContent.innerHTML = "";
 			lightboxOpen = false;
-		} else if (arguments[0].animationName === "open-animation" && albOverlay.classList.contains("opening")) {
+		} else if (event.animationName === "open-animation" && albOverlay.classList.contains("opening")) {
 			lightboxOpen = true;
 		}
 	}
