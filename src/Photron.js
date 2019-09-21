@@ -81,6 +81,12 @@ function Photron(options) {
 		return resElement;
 	};
 
+	function appendChildrens(parent, children) {
+		children.forEach(function(child) {
+			parent.appendChild(child);
+		});
+	};
+
 	/*-- Append the actual lightbox to the HTML-body --*/
 	var albOverlay = buildElement("div", "photron-overlay");
 	albOverlay.onanimationend = function (event) {
@@ -145,18 +151,14 @@ function Photron(options) {
 	albNext.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M160 128l32-32 160 160-160 160-32-32 127-128z"/></svg>';
 	albNext.onclick = next;
 
-	nav.appendChild(albPrev);
-	nav.appendChild(albClose);
-	nav.appendChild(albNext);
+	appendChildrens(nav, [albPrev, albClose, albNext]);
 
 	var albFooter = buildElement("div");
 
-	albOverlay.appendChild(nav);
-	albOverlay.appendChild(albContent);
-	albOverlay.appendChild(albFooter);
+	appendChildrens(albOverlay, [nav, albContent, albFooter]);
 
 	var body = doc.getElementsByTagName("body")[0];
-	body.appendChild(albOverlay);
+	appendChildrens(body, [albOverlay]);
 
 	function loadContent(item) {
 		var tag = item.localName;
