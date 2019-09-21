@@ -96,17 +96,17 @@ function Photron(options) {
 	var albPrev = document.createElement("span");
 	albPrev.id = "photron-i-prev";
 	albPrev.title = language[settings.language]["prev"];
-	albPrev.innerHTML = "<svg height='32' viewBox='0 0 512 512' width='32' xmlns='http://www.w3.org/2000/svg'><polygon points='352,128.4 319.7,96 160,256 160,256 160,256 319.7,416 352,383.6 224.7,256 '/></svg>";
+	albPrev.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M352 128l-32-32-160 160 160 160 32-32-127-128z"/></svg>';
 
 	var albClose = document.createElement("span");
 	albClose.id = "photron-i-close";
 	albClose.title = language[settings.language]["close"];
-	albClose.innerHTML = "<svg height='32' viewBox='0 0 48 48' width='32' xmlns='http://www.w3.org/2000/svg'><path d='M38 12.83l-2.83-2.83-11.17 11.17-11.17-11.17-2.83 2.83 11.17 11.17-11.17 11.17 2.83 2.83 11.17-11.17 11.17 11.17 2.83-2.83-11.17-11.17z'/><path d='M0 0h48v48h-48z' fill-opacity='0'/></svg>";
+	albClose.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path d="M38 13l-3-3-11 11-11-11-3 3 11 11-11 11 3 3 11-11 11 11 3-3-11-11z"/><path fill="none" d="M0 0h48v48H0z"/></svg>';
 
 	var albNext = document.createElement("span");
 	albNext.id = "photron-i-next";
 	albNext.title = language[settings.language]["next"];
-	albNext.innerHTML = "<svg height='32' viewBox='0 0 512 512' width='32' xmlns='http://www.w3.org/2000/svg'><polygon points='160,128.4 192.3,96 352,256 352,256 352,256 192.3,416 160,383.6 287.3,256 '/></svg>";
+	albNext.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M160 128l32-32 160 160-160 160-32-32 127-128z"/></svg>';
 
 	nav.appendChild(albPrev);
 	nav.appendChild(albClose);
