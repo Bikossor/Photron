@@ -5,9 +5,11 @@ function Photron(options) {
 	var defaults = {
 		showImageTitle: true,
 		showGalleryTitle: true,
-		language: navigator.language.substr(0, 2),
 		roundRobin: true,
-		showYoutubeThumbnails: false
+		showYoutubeThumbnails: false,
+		labelPrevious: "Previous image",
+		labelClose: "Close",
+		labelNext: "Next image"
 	};
 
 	/*-- Variables --*/
@@ -21,55 +23,6 @@ function Photron(options) {
 		totalItems = items.length,
 		totalItemsCount = 0,
 		lightboxOpen = false;
-
-	/*-- Languages --*/
-	var language = {
-		de: {
-			prev: "Vorheriges Bild",
-			next: "Nächstes Bild",
-			close: "Schließen"
-		},
-		en: {
-			prev: "previous image",
-			next: "next image",
-			close: "close"
-		},
-		fr: {
-			prev: "Image précédente",
-			next: "Image suivante",
-			close: "Fermer"
-		},
-		es: {
-			prev: "Imagen anterior",
-			next: "Siguiente imagen",
-			close: "Cerca"
-		},
-		it: {
-			prev: "Immagine precedente",
-			next: "Immagine successiva",
-			close: "Vicino"
-		},
-		zh: {
-			prev: "上一张图片",
-			next: "下一图片",
-			close: "关"
-		},
-		ru: {
-			prev: "Предыдущее изображение",
-			next: "Следующее изображение",
-			close: "Закрыть"
-		},
-		da: {
-			prev: "Forrige billede",
-			next: "Næste billede",
-			close: "Tæt"
-		},
-		nl: {
-			prev: "Vorig beeld",
-			next: "Volgend beeld",
-			close: "Dichtbij"
-		}
-	};
 
 	function buildElement(tagName, id) {
 		var resElement = doc.createElement(tagName);
@@ -114,7 +67,7 @@ function Photron(options) {
 	}
 
 	var albPrev = buildElement("span", "photron-i-prev");
-	albPrev.title = language[settings.language]["prev"];
+	albPrev.title = settings.labelPrevious;
 	albPrev.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M352 128l-32-32-160 160 160 160 32-32-127-128z"/></svg>';
 	albPrev.onclick = previous;
 
@@ -132,7 +85,7 @@ function Photron(options) {
 	}
 
 	var albClose = buildElement("span", "photron-i-close");
-	albClose.title = language[settings.language]["close"];
+	albClose.title = settings.labelClose;
 	albClose.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path d="M38 13l-3-3-11 11-11-11-3 3 11 11-11 11 3 3 11-11 11 11 3-3-11-11z"/><path fill="none" d="M0 0h48v48H0z"/></svg>';
 	albClose.onclick = close;
 
@@ -147,7 +100,7 @@ function Photron(options) {
 	}
 
 	var albNext = buildElement("span", "photron-i-next");
-	albNext.title = language[settings.language]["next"];
+	albNext.title = settings.labelNext;
 	albNext.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M160 128l32-32 160 160-160 160-32-32 127-128z"/></svg>';
 	albNext.onclick = next;
 
