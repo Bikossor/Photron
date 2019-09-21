@@ -97,26 +97,53 @@ function Photron(options) {
 
 	var nav = buildElement("nav");
 
+	function previous() {
+		if (index > 0) {
+			index--;
+			update();
+		} else if (settings.roundRobin) {
+			index = totalItems - 1;
+			update();
+		}
+	}
+
 	var albPrev = buildElement("span", "photron-i-prev");
 	albPrev.title = language[settings.language]["prev"];
 	albPrev.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M352 128l-32-32-160 160 160 160 32-32-127-128z"/></svg>';
-	albPrev.onclick = function () {
-		previous();
-	};
+	albPrev.onclick = previous;
+
+	function close() {
+		if (lightboxOpen) {
+			lightboxOpen = false;
+
+			albOverlay.classList.remove("opening");
+			albOverlay.classList.add("closing");
+
+			if (doc.title !== docTitle) {
+				doc.title = docTitle;
+			}
+		}
+	}
 
 	var albClose = buildElement("span", "photron-i-close");
 	albClose.title = language[settings.language]["close"];
 	albClose.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path d="M38 13l-3-3-11 11-11-11-3 3 11 11-11 11 3 3 11-11 11 11 3-3-11-11z"/><path fill="none" d="M0 0h48v48H0z"/></svg>';
-	albClose.onclick = function () {
-		close();
-	};
+	albClose.onclick = close;
+
+	function next() {
+		if (index < totalItems - 1) {
+			index++;
+			update();
+		} else if (settings.roundRobin) {
+			index = 0;
+			update();
+		}
+	}
 
 	var albNext = buildElement("span", "photron-i-next");
 	albNext.title = language[settings.language]["next"];
 	albNext.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M160 128l32-32 160 160-160 160-32-32 127-128z"/></svg>';
-	albNext.onclick = function () {
-		next();
-	};
+	albNext.onclick = next;
 
 	nav.appendChild(albPrev);
 	nav.appendChild(albClose);
@@ -192,42 +219,6 @@ function Photron(options) {
 		items[i].onclick = function (e) {
 			itemClicked(e);
 		};
-	}
-
-	function close() {
-		if (lightboxOpen) {
-			lightboxOpen = false;
-
-			albOverlay.classList.remove("opening");
-			albOverlay.classList.add("closing");
-
-			if (doc.title !== docTitle) {
-				doc.title = docTitle;
-			}
-		}
-		return false;
-	}
-
-	function next() {
-		if (index < totalItems - 1) {
-			index++;
-			update();
-		} else if (settings.roundRobin) {
-			index = 0;
-			update();
-		}
-		return false;
-	}
-
-	function previous() {
-		if (index > 0) {
-			index--;
-			update();
-		} else if (settings.roundRobin) {
-			index = totalItems - 1;
-			update();
-		}
-		return false;
 	}
 
 	var touchX = null;
