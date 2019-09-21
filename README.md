@@ -7,17 +7,6 @@
 An easy-to-use lightbox.
 
 ## Features
-- Supports 9 different languages
-	- German,
-	- English,
-	- French,
-	- Spanish,
-	- Italian,
-	- Chinese,
-	- Russian,
-	- Danish,
-	- Dutch
-- ~~Supports videos from YouTube~~ **(Currently WIP)**
 - Supports touch gestures for navigation
 - Completly vanilla and standalone
 
@@ -46,9 +35,11 @@ Setting | Datatype | Default | Description
 effectTime | int | 200 | How many milliseconds the animations takes.
 showImageTitle | boolean | true | Whether the ``data-title`` attribute of the ``img`` should be shown or not.
 showGalleryTitle | boolean | true | Whether the ``data-title`` attribute of the Photron container *(e.g. ``.lightBox``)* should be shown or not.
-language | string | Default language of the webbrowser | In which language the text should be translated. Possible languanges: **de** (German), **en** (English), **fr** (French), **es** (Spanish), **it** (Italian), **zh** (Chinese), **ru** (Russian), **da** (Danish) and **nl** (Dutch)
 roundRobin | boolean | true | Whether the items in an Photron should begin at the start if the end was reached and vice versa.
 showYoutubeThumbnails | boolean | false | Whether the thumbnails of embedded YouTube videos should be shown or not.
+labelPrevious | string | "Previous image" | Set a custom text for the previous-button.
+labelClose | string | "Close" | Set a custom text for the close-button.
+labelNext | string | "Next image" | Set a custom text for the next-button.
 
 ## Versioning
 I am using [Semantic Versioning 2.0.0](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/Bikossor/Photron/tags).
