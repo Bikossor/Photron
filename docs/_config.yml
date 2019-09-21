@@ -1,9 +1,0 @@
-project: ALightBox
-description: An easy-to-use lightbox in form of a jQuery Plugin
-author: Bikossor
-email: contact@bikossor.de
-keywords: jquery, plugin, lightbox, bikossor, javascript, software, website, es5
-markdown: kramdown
-sass:
-  sass_dir: css
-  style: compressed
