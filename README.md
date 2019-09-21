@@ -32,11 +32,9 @@ An easy-to-use lightbox.
 
 Setting | Datatype | Default | Description
 ------- | -------- | ------- | -----------
-effectTime | int | 200 | How many milliseconds the animations takes.
 showImageTitle | boolean | true | Whether the ``data-title`` attribute of the ``img`` should be shown or not.
 showGalleryTitle | boolean | true | Whether the ``data-title`` attribute of the Photron container *(e.g. ``.lightBox``)* should be shown or not.
 roundRobin | boolean | true | Whether the items in an Photron should begin at the start if the end was reached and vice versa.
-showYoutubeThumbnails | boolean | false | Whether the thumbnails of embedded YouTube videos should be shown or not.
 labelPrevious | string | "Previous image" | Set a custom text for the previous-button.
 labelClose | string | "Close" | Set a custom text for the close-button.
 labelNext | string | "Next image" | Set a custom text for the next-button.
