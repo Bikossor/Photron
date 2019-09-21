@@ -9,7 +9,7 @@ var cleanCSSPlugin = new lessPluginCleanCSS({
 	advanced: true
 });
 
-var fileName = "ALightBox";
+var fileName = "Photron";
 var folderSource = "src/";
 var folderDestination = "dist/";
 

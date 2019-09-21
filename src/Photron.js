@@ -1,4 +1,4 @@
-function ALightBox(options) {
+function Photron(options) {
   "use strict";
 
   /*-- Plugin defaults --*/
