@@ -74,8 +74,6 @@ function Photron(options) {
 	/*-- Append the actual lightbox to the HTML-body --*/
 	var albOverlay = doc.createElement("div");
 	albOverlay.id = "photron-overlay";
-
-	var albContent = doc.createElement("div");
 	albOverlay.onanimationend = function (event) {
 		if (event.animationName === "close-animation" && albOverlay.classList.contains("closing")) {
 			albOverlay.classList.remove("closing");
