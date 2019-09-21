@@ -41,16 +41,6 @@ function Photron(options) {
 
 	/*-- Append the actual lightbox to the HTML-body --*/
 	var albOverlay = buildElement("div", "photron-overlay");
-	albOverlay.onanimationend = function (event) {
-		if (event.animationName === "close-animation" && albOverlay.classList.contains("closing")) {
-			albOverlay.classList.remove("closing");
-			albContent.innerHTML = "";
-			lightboxOpen = false;
-		} else if (event.animationName === "open-animation" && albOverlay.classList.contains("opening")) {
-			lightboxOpen = true;
-		}
-	};
-
 	var albContent = buildElement("div", "photron-content");
 
 	var nav = buildElement("nav");
@@ -74,8 +64,7 @@ function Photron(options) {
 		if (lightboxOpen) {
 			lightboxOpen = false;
 
-			albOverlay.classList.remove("opening");
-			albOverlay.classList.add("closing");
+			albOverlay.classList.remove("open");
 
 			if (doc.title !== docTitle) {
 				doc.title = docTitle;
@@ -142,9 +131,7 @@ function Photron(options) {
 			galleryTitle = obj.target.parentNode.dataset["title"];
 			index = getIndex(obj.target.id, "photron-item"); //Doesn't work on a-tags yet
 
-			if (!albOverlay.classList.contains("closing")) {
-				albOverlay.classList.add("opening");
-			}
+			albOverlay.classList.add("open");
 
 			update();
 		}
