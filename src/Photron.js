@@ -34,7 +34,7 @@ function Photron(options) {
 	};
 
 	function appendChildrens(parent, children) {
-		children.forEach(function(child) {
+		children.forEach(function (child) {
 			parent.appendChild(child);
 		});
 	};
@@ -102,7 +102,7 @@ function Photron(options) {
 	appendChildrens(body, [albOverlay]);
 
 	function loadContent(item) {
-		if(item.localName !== "img") {
+		if (item.localName !== "img") {
 			return;
 		}
 
