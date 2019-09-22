@@ -1,10 +1,14 @@
-[![Build Status](https://travis-ci.org/Bikossor/Photron.svg?branch=master)](https://travis-ci.org/Bikossor/Photron)
-[![GitHub release](https://img.shields.io/github/release/bikossor/Photron.svg)]()
-[![Size](http://img.badgesize.io/https://raw.githubusercontent.com/Bikossor/Photron/master/dist/Photron-1.0.0.js.svg)]()
-[![Gzip size](http://img.badgesize.io/https://raw.githubusercontent.com/Bikossor/Photron/master/dist/Photron-1.0.0.js?compression=gzip)]()
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/92dc4d00fa224240826dae2a48ed5cfd)](https://www.codacy.com/app/Bikossor/Photron?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Bikossor/Photron&amp;utm_campaign=Badge_Grade)
 # Photron
 An easy-to-use lightbox.
+
+[![Build Status](https://travis-ci.org/Bikossor/photron.svg?branch=develop)](https://travis-ci.org/Bikossor/photron)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/92dc4d00fa224240826dae2a48ed5cfd)](https://www.codacy.com/manual/Bikossor/ALightBox?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Bikossor/ALightBox&amp;utm_campaign=Badge_Grade)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/Bikossor/Photron)
+![GitHub file size in bytes](https://img.shields.io/github/size/Bikossor/Photron/dist/Photron.min.js?label=JS%20size)
+![GitHub file size in bytes](https://img.shields.io/github/size/Bikossor/Photron/dist/Photron.min.css?label=CSS%20size)
+![GitHub issues](https://img.shields.io/github/issues/bikossor/photron.svg)
+![GitHub closed issues](https://img.shields.io/github/issues-closed/bikossor/photron.svg)
+![GitHub](https://img.shields.io/github/license/bikossor/photron.svg)
 
 ## Features
 - Supports touch gestures for navigation
@@ -17,14 +21,14 @@ An easy-to-use lightbox.
 - Just download the compressed javascript file from the ``dist/`` folder
 - After that you'll also to reference the javascript file in your HTML file by using:<br>
 ```html
-<script src="./[PATH]/[TO]/Photron-1.0.0.js"></script>
+<script src="./[PATH]/[TO]/Photron.min.js"></script>
 ```
 - Last you add the ``.photron-item`` class to every item inside the gallery
 
 ### Usage
 ```html
 <script type="text/javascript">
-	new Photron({
+	Photron({
 		//-- Custom settings
 	});
 </script>
