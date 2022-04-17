@@ -15,6 +15,7 @@
     var settings = $.extend({}, defaults, options);
     var docTitle = document.title;
     var galleryTitle = '';
+    var rootItem = $(this);
     var itemSelector = '.alb-item';
     var index = 0;
     var items = $(this).find(itemSelector);
@@ -93,7 +94,7 @@
 
     function open(obj) {
       galleryTitle = obj.parent().data('title');
-      index = $(obj).parent().children(itemSelector).index(obj);
+      index = rootItem.find(itemSelector).index(obj);
 
       update();
       $('#alb-overlay').fadeIn(settings.effectTime);
